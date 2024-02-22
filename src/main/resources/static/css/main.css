@@ -1,0 +1,11 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.bg-active {
+    background: rgb(127,173,57) !important;
+}
+

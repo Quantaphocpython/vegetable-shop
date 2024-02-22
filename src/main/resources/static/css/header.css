@@ -1,0 +1,128 @@
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.header-top {
+    background-color: rgb(245,245,245);
+    height: 46px;
+    font-size: 14px;
+}
+
+.header-top-left, .header-top-right {
+    margin: 0;
+    list-style-type: none;
+    padding: 12px 0 13px;
+}
+
+.header-top-item {
+    display: inline-block;
+}
+
+.header-top-left__mail {
+    margin-right: 40px ;
+}
+
+.header-top-left__mail-icon {
+    margin-right: 3px;
+}
+
+.header-top-left__mail::after, .header-top-item-separate::after {
+    position: absolute;
+    top: 12px;
+    margin: 0 20px;
+    width: 0.5px;
+    height: 20px;
+    background-color: black;
+    opacity: 0.1;
+    content: "";
+}
+
+.header-top-right {
+    width: max-content;
+    float: left;
+}
+
+.header-top-right-icon {
+    color: black;
+    margin-right: 20px;
+}
+
+.header-top-item-separate {
+    margin-right: 40px;
+    color: black;
+}
+
+.header-top-login {
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+}
+
+.login-icon {
+    margin-right: 2px;
+}
+
+.header-menu-nav {
+    background-color: white !important;
+}
+
+.header-menu-item-btn {
+    color: black;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.header-menu-item-btn:hover {
+    color: #7fad39;
+}
+
+.active {
+    color: #7fad39;
+}
+
+.header-menu-icon {
+    color: black;
+    font-size: 17px;
+    margin-right: 5px;
+}
+
+.header-user-action, .header-menu-page {
+    background-color: black;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    display: none;
+    border-radius: unset;
+    position: absolute;
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.header-top-item:hover .header-user-action {
+    display: block;
+}
+
+.header-menu-page-wrapper:hover .header-menu-page {
+    display: block;
+}
+
+
+.header-user-action-item {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    line-height: 17px;
+    letter-spacing: 1px;
+    color: white;
+    background-color: black;
+    text-decoration: none;
+}
+
+.header-user-action-item:hover {
+    color: #7fad39;
+    background-color: black;
+}
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:fragment="boots_trap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+</head>
+<body>
+    <div class="header" th:fragment="header">
+        <div class="header-top">
+            <div class="container col-9">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <ul class="header-top-left">
+                            <li class="header-top-item header-top-left__mail">
+                                <i class="bi bi-envelope-fill header-top-left__mail-icon"></i>
+                                hello@colorlib.com
+                            </li>
+                            <li class="header-top-item">Free Shipping for all Order of $99</li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 col-md-6" style="display: flex; justify-content: flex-end">
+                        <ul class="header-top-right">
+                            <li class="header-top-item">
+                                <a href="#" class="header-top-right-icon"><i class="bi bi-facebook"></i></a>
+                            </li>
+                            <li class="header-top-item">
+                                <a href="#" class="header-top-right-icon"><i class="bi bi-twitter"></i></a>
+                            </li>
+                            <li class="header-top-item">
+                                <a href="#" class="header-top-right-icon"><i class="bi bi-linkedin"></i></a>
+                            </li>
+                            <li class="header-top-item header-top-item-separate">
+                                <a href="#" class="header-top-right-icon" style="margin: 0;"><i class="bi bi-pinterest"></i></a>
+                            </li>
+                            <li class="header-top-item" sec:authorize="!isAuthenticated()">
+                                <a th:href="@{/login}" href="/static" class="header-top-login">
+                                    <i class="bi bi-person-fill login-icon"></i>
+                                    <span>Login</span>
+                                </a>
+                            </li>
+                            <li class="header-top-item" sec:authorize="isAuthenticated()">
+                                <a th:href="@{/static}" href="/static" class="header-top-login">
+                                    <i class="bi bi-person-fill login-icon"></i>
+                                    <span th:text="${#authentication.name}"></span>
+                                </a>
+                                <div class="list-group header-user-action">
+                                    <a th:href="@{/logout}" class="list-group-item list-group-item-action header-user-action-item">Logout</a>
+                                    <a th:href="@{/logout}" class="list-group-item list-group-item-action header-user-action-item">Logout</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            <!--header-menu-->
+                <div class="row">
+                    <nav class="navbar bg-body-tertiary header-menu-nav">
+                        <div class="container">
+                            <a class="navbar-brand " href="#">
+                                <img th:src="@{/img/logo.png}" alt="Logo" class="d-inline-block align-text-top">
+                            </a>
+                            <ul class="nav col-6 ">
+                                <li class="nav-item col-2">
+                                    <a class="nav-link header-menu-item-btn"
+                                       aria-current="page" href="#">
+                                        HOME
+                                    </a>
+                                </li>
+                                <li class="nav-item col-2">
+                                    <a class="nav-link header-menu-item-btn" href="#">SHOP</a>
+
+                                </li>
+                                <li class="nav-item col-2 header-menu-page-wrapper">
+                                    <a class="nav-link header-menu-item-btn" href="#">PAGES</a>
+                                    <div class="list-group header-menu-page">
+                                        <a th:href="@{/static}" class="list-group-item list-group-item-action header-user-action-item">Shop Details</a>
+                                        <a th:href="@{/static}" class="list-group-item list-group-item-action header-user-action-item">Shoping Cart</a>
+                                        <a th:href="@{/static}" class="list-group-item list-group-item-action header-user-action-item">Check out</a>
+                                        <a th:href="@{/static}" class="list-group-item list-group-item-action header-user-action-item">Blog Details</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item col-2">
+                                    <a class="nav-link header-menu-item-btn" href="#">BLOG</a>
+                                </li>
+                                <li class="nav-item col-2">
+                                    <a class="nav-link header-menu-item-btn" href="#">CONTACT</a>
+                                </li>
+                            </ul>
+
+                            <div class="">
+                                <a href="#" style="text-decoration: none; margin-right: 8px;">
+                                    <i class="bi bi-bag-dash-fill header-menu-icon"></i>
+                                </a>
+                                item: <b>$150.00</b>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

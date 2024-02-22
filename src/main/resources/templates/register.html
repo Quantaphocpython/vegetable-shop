@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+<body class="body-login">
+    <div class="login-container-wrapper">
+        <form th:action="@{/registration/register}" th:object="${user}" method="post" class="login-container col-9">
+            <div class="alert alert-info" th:if="${param.success}">
+                Please check your email to complete your registration.
+            </div>
+
+            <div class="mb-3 row">
+                <label for="firstName" class="col-sm-4 col-form-label">First Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="firstName" th:field="*{firstName}" required>
+                </div>
+                <p th:errors="*{firstName}" class="text-danger" th:if="${#fields.hasErrors('firstName')}"></p>
+            </div>
+            <div class="mb-3 row">
+                <label for="lastName" class="col-sm-4 col-form-label">Last Name</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="lastName" th:field="*{lastName}" required>
+                </div>
+                <p th:errors="*{lastName}" class="text-danger" th:if="${#fields.hasErrors('lastName')}"></p>
+            </div>
+            <div class="mb-3 row">
+                <label for="email" class="col-sm-4 col-form-label">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="email" th:field="*{email}" required>
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="password" class="col-sm-4 col-form-label">Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="password" th:field="*{password}" required>
+                </div>
+                <p th:errors="*{password}" class="text-danger" th:if="${#fields.hasErrors('password')}"></p>
+            </div>
+            <div class="mb-3 row">
+                <label for="confirmPassword" class="col-sm-4 col-form-label">Confirm Password</label>
+                <div class="col-sm-8">
+                    <input type="password" class="form-control" id="confirmPassword" th:field="*{confirmPassword}" required>
+                </div>
+                <div class="" th:if="${param.invalidc_f}" style="color: red; font-size: 14px;">* Confirm password is incorrect</div>
+            </div>
+            <button type="submit" class="btn btn-info">Register</button>
+            <span class="mt-2">Registered already? <a href="/" th:href="@{/login}" style="text-decoration: none">
+                 Login here
+             </a></span>
+        </form>
+    </div>
+</body>
+</html>

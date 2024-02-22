@@ -1,0 +1,33 @@
+
+.body-login {
+    width: 100vw;
+    height: 100vh;
+    background-color: #7fad39;
+}
+
+.login-container-wrapper {
+    background-color: white;
+    width: 600px;
+    height: 300px;
+    border-radius: 30px;
+    box-shadow: 0 0 6px 1px rgba(0, 0, 0, 0.7);
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+
