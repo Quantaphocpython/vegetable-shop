@@ -42,7 +42,7 @@ public class HomeController {
     @Autowired
     private BlogService blogService;
 
-    @GetMapping("/")
+    @GetMapping
     public ModelAndView home() throws ParseException {
         ModelAndView modelAndView = new ModelAndView("home");
         List<Category> categories = categoryService.getCategoryList();
@@ -60,7 +60,7 @@ public class HomeController {
     }
 
     @PostMapping("/addCategory")
-    public ResponseEntity<?> addCategory(@RequestParam("name") String name, @RequestParam("image")MultipartFile file) throws IOException {
+    public ResponseEntity<?> addCategory(@RequestParam("name") String name, @RequestParam("image") MultipartFile file) throws IOException {
         categoryService.addCategory(name, file);
         return ResponseEntity.ok("success");
     }

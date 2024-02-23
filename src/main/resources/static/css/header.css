@@ -105,6 +105,14 @@
     display: block;
 }
 
+.nav-link.header-menu-item-btn:hover {
+    color: #7fad39;
+}
+
+.nav-link.header-menu-item-btn.active {
+    color: #7fad39;
+}
+
 .header-menu-page-wrapper:hover .header-menu-page {
     display: block;
 }

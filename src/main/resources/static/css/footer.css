@@ -8,6 +8,7 @@
 .footer-wrapper {
     background-color: rgb(243,246,250);
     height: max-content;
+    padding-bottom: 16px;
 }
 
 .footer-left-icon {
@@ -21,6 +22,7 @@
     margin: 5px 0;
     color: #1c1c1c;
 }
+
 
 .footer-left-contact {
     font-weight: bold;
@@ -49,6 +51,10 @@
 
 .footer-right-email {
     width: 120px;
+}
+
+.footer-top {
+    margin-bottom: 90px;
 }
 
 .footer-down-image {
