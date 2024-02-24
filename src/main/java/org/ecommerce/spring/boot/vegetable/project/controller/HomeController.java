@@ -1,5 +1,6 @@
 package org.ecommerce.spring.boot.vegetable.project.controller;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.ecommerce.spring.boot.vegetable.project.dto.BlogDto;
 import org.ecommerce.spring.boot.vegetable.project.dto.ProductDto;
 import org.ecommerce.spring.boot.vegetable.project.entity.Banner;
@@ -26,7 +27,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping({"/", "/home"})
 public class HomeController {
 
@@ -43,7 +44,7 @@ public class HomeController {
     private BlogService blogService;
 
     @GetMapping
-    public ModelAndView home() throws ParseException {
+    public ModelAndView home(HttpServletRequest request) throws ParseException {
         ModelAndView modelAndView = new ModelAndView("home");
         List<Category> categories = categoryService.getCategoryList();
         List<Banner> banners = bannerService.getBannerList();
@@ -51,6 +52,7 @@ public class HomeController {
         modelAndView.addObject("categories", categories);
         modelAndView.addObject("banners", banners);
         modelAndView.addObject("blogs", blogs);
+        modelAndView.addObject("request", request);
         return modelAndView;
     }
 

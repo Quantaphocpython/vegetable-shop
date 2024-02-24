@@ -42,14 +42,14 @@ public class SecurityConfig {
                         form -> form.loginPage("/login")
                                 .loginProcessingUrl("/login")
                                 .usernameParameter("email")
-                                .defaultSuccessUrl("/")
+                                .defaultSuccessUrl("/home")
                                 .permitAll()
                 )
                 .logout(
                         log -> log.invalidateHttpSession(true)
                                 .clearAuthentication(true)
                                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                                .logoutSuccessUrl("/")
+                                .logoutSuccessUrl("/home")
                                 .permitAll()
                 )
                 .build();

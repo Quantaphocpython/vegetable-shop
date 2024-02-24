@@ -70,12 +70,18 @@
                             <ul class="nav col-6 ">
                                 <li class="nav-item col-2">
                                     <a class="nav-link header-menu-item-btn"
-                                       aria-current="page" th:href="@{/}" >
+                                       aria-current="page" th:href="@{/home}"
+                                       th:classappend="${request.getRequestURL().toString().contains('home')} ? 'active':''"
+                                    >
                                         HOME
                                     </a>
                                 </li>
                                 <li class="nav-item col-2">
-                                    <a class="nav-link header-menu-item-btn" th:href="@{/shop}">SHOP</a>
+                                    <a class="nav-link header-menu-item-btn" th:href="@{/shop}"
+                                       th:classappend="${request.getRequestURL().toString().contains('shop')} ? 'active':''"
+                                    >
+                                        SHOP
+                                    </a>
 
                                 </li>
                                 <li class="nav-item col-2 header-menu-page-wrapper">
