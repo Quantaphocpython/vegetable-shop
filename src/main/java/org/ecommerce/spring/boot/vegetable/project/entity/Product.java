@@ -22,6 +22,11 @@ public class Product {
     @Column(length = 1000000000)
     private byte[] image;
 
+    private Boolean isSale;
+    private Integer salePercent;
+    @Transient
+    private Double saleCost;
+
     @ManyToOne
     @JoinColumn(
             name = "category_id",
@@ -29,4 +34,10 @@ public class Product {
     )
     private Category category;
 
+    @PostLoad
+    public void createSaleCost() {
+        if(isSale) {
+            saleCost = (double) cost * (100 - salePercent) / 100;
+        }
+    }
 }

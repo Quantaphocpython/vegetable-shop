@@ -21,7 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.naming.Binding;
 import java.util.Optional;
 
-@Controller
+@RestController
 @RequestMapping("/registration")
 public class RegistrationController {
 

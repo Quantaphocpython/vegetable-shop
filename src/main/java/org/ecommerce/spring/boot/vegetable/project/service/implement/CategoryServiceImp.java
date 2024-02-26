@@ -32,9 +32,9 @@ public class CategoryServiceImp implements CategoryService {
     @Override
     public List<Category> getCategoryList() {
         List<Category> categories = categoryRepository.findAll();
-        for(Category c : categories) {
-            c.setImage(imageUtils.decompressImage(c.getImage()));
-        }
+//        for(Category c : categories) {
+//            c.setImage(imageUtils.decompressImage(c.getImage()));
+//        }
         return categories;
     }
 

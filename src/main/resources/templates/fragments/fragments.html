@@ -41,7 +41,7 @@
                                 <a href="#" class="header-top-right-icon" style="margin: 0;"><i class="bi bi-pinterest"></i></a>
                             </li>
                             <li class="header-top-item" sec:authorize="!isAuthenticated()">
-                                <a th:href="@{/login}" href="/static" class="header-top-login">
+                                <a th:href="@{/login}" class="header-top-login">
                                     <i class="bi bi-person-fill login-icon"></i>
                                     <span>Login</span>
                                 </a>
@@ -111,6 +111,15 @@
                     </nav>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div th:fragment="page-title-image">
+        <div class="page-title-wrapper">
+            <img th:src="@{/img/breadcrumb.jpg.webp}" class="page-title-img">
+            <h2 class="page-title"
+                th:text="${request.getRequestURL().toString().contains('shop')} ? 'Ogani Shop':''">
+            </h2>
         </div>
     </div>
 </body>

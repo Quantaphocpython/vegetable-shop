@@ -71,4 +71,13 @@ public class ProductServiceImp implements ProductService {
         Long totalPage = (long) productRepository.findAll(PageRequest.of(0, 8)).getTotalPages();
         return totalPage;
     }
+
+    @Override
+    public List<Product> getProductSaleOffList(String categoryName) {
+        if(categoryName.equals("ALL")) {
+            return productRepository.findAllByIsSaleTrue();
+        }
+        Category category = categoryRepository.getByName(categoryName);
+        return productRepository.findAllByIsSaleTrueAndCategory(category);
+    }
 }

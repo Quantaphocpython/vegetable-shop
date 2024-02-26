@@ -18,4 +18,6 @@ public interface ProductService {
     Long getTotalPages(String categoryName);
 
     long getTotalPagesAll();
+
+    List<Product> getProductSaleOffList(String categoryName);
 }

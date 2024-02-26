@@ -20,7 +20,7 @@
 <body>
     <div th:insert="fragments/fragments :: header"></div>
     <div class="container col-9 search-content">
-        <div class="row">
+        <div class="row" th:fragment="header-search-bar">
             <div class="dropdown search-content-department-wrapper col-3">
                 <a class="btn btn-secondary dropdown-toggle search-content-department" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <i class="bi bi-list" style="margin-right: 10px"></i>

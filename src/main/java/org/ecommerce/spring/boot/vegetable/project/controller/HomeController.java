@@ -20,6 +20,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -57,8 +58,8 @@ public class HomeController {
     }
 
     @GetMapping("/login")
-    public String loginForm() {
-        return "login";
+    public ModelAndView loginForm() {
+        return new ModelAndView("login");
     }
 
     @PostMapping("/addCategory")

@@ -259,6 +259,7 @@
     font-size: 36px;
 }
 
+
 .featured-product-title:after {
     display: block;
     height: 4px;
@@ -297,6 +298,18 @@
 
 .feature-product-item {
     margin-top: 35px;
+    position: relative;
+}
+
+.feature-product-item-sale_percent {
+    top: 15px;
+    left: 15px;
+    position: absolute;
+    padding: 12px 7px;
+    font-size: 14px;
+    border-radius: 30px;
+    color: white;
+    background-color: rgb(221,34,34);
 }
 
 .feature-product-item-text {
@@ -319,6 +332,14 @@
 
 .feature-product-item-cost {
     font-size: 18px;
+    font-weight: bold;
+}
+
+.feature-product-item-cost-prev {
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.4);
+    margin-left: 15px;
+    text-decoration: line-through;
     font-weight: bold;
 }
 
