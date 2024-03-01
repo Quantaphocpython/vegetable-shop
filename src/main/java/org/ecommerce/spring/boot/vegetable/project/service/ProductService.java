@@ -9,7 +9,7 @@ import java.util.List;
 public interface ProductService {
     Product addProduct(ProductDto productDto) throws IOException;
 
-    List<Product> getProductList(Integer pageNumber);
+    List<Product> getProductList(Integer pageNumber, Integer pageSize, Integer min, Integer max, String categoryName, String sort);
 
     byte[] getProductImage(Long id);
 
@@ -17,7 +17,11 @@ public interface ProductService {
 
     Long getTotalPages(String categoryName);
 
-    long getTotalPagesAll();
+    long getTotalPagesAll(double min, double max, Integer pageSize, String categoryName);
 
     List<Product> getProductSaleOffList(String categoryName);
+
+    Long getProductSize(double min, double max, String categoryName);
+
+    List<Product> getLatestProduct();
 }

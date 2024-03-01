@@ -2,8 +2,8 @@ package org.ecommerce.spring.boot.vegetable.project.repository;
 
 import org.ecommerce.spring.boot.vegetable.project.entity.Category;
 import org.ecommerce.spring.boot.vegetable.project.entity.Product;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+import org.ecommerce.spring.boot.vegetable.project.service.ProductService;
+import org.springframework.data.domain.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,4 +18,11 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findAllByIsSaleTrue();
 
     List<Product> findAllByIsSaleTrueAndCategory(Category category);
+    Long countByCostBetween(double min, double max);
+
+    Page<Product> findAllByCostBetween(double min, double max, Pageable pageable);
+
+    Page<Product> findAllByCostBetweenAndCategory(double min, double max, Category category, Pageable pageable);
+
+    Long countByCostBetweenAndCategory(double min, double max, Category category);
 }

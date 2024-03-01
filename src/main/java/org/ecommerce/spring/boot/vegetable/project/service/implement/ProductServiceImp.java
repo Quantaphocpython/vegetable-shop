@@ -10,6 +10,7 @@ import org.ecommerce.spring.boot.vegetable.project.utility.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -40,8 +41,17 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public List<Product> getProductList(Integer pageNumber) {
-        return productRepository.findAll(PageRequest.of(pageNumber, 8)).getContent();
+    public List<Product> getProductList(Integer pageNumber, Integer pageSize, Integer min,
+                                        Integer max, String categoryName, String sort) {
+        Sort sorting = Sort.by("id");
+        if (sort.equals("price-dec")) {
+            sorting = Sort.by(Sort.Direction.DESC, "cost");
+        }
+        if(categoryName.equals("ALL")) {
+            return productRepository.findAllByCostBetween(min, max, PageRequest.of(pageNumber, pageSize, sorting)).getContent();
+        }
+        Category category = categoryRepository.getByName(categoryName);
+        return productRepository.findAllByCostBetweenAndCategory(min, max, category,PageRequest.of(pageNumber, pageSize, sorting)).getContent();
     }
 
     @Override
@@ -67,8 +77,12 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public long getTotalPagesAll() {
-        Long totalPage = (long) productRepository.findAll(PageRequest.of(0, 8)).getTotalPages();
+    public long getTotalPagesAll(double min, double max, Integer pageSize, String categoryName) {
+        if(categoryName.equals("ALL")) {
+            return (long) productRepository.findAllByCostBetween(min, max, PageRequest.of(0, pageSize)).getTotalPages();
+        }
+        Category category = categoryRepository.getByName(categoryName);
+        Long totalPage = (long) productRepository.findAllByCostBetweenAndCategory(min, max, category, PageRequest.of(0, pageSize)).getTotalPages();
         return totalPage;
     }
 
@@ -79,5 +93,20 @@ public class ProductServiceImp implements ProductService {
         }
         Category category = categoryRepository.getByName(categoryName);
         return productRepository.findAllByIsSaleTrueAndCategory(category);
+    }
+
+    @Override
+    public Long getProductSize(double min, double max, String categoryName) {
+        if(categoryName.equals("ALL"))
+            return productRepository.countByCostBetween(min, max);
+        Category category = categoryRepository.getByName(categoryName);
+        return productRepository.countByCostBetweenAndCategory(min, max, category);
+    }
+
+    @Override
+    public List<Product> getLatestProduct() {
+        PageRequest pageRequest = PageRequest.of(0, 6, Sort.by("id").descending());
+
+        return productRepository.findAll(pageRequest).getContent();
     }
 }

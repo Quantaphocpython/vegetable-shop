@@ -44,7 +44,6 @@ function getAllProduct(pageNumber) {
 }
 
 function pageChoose(val) {
-    console.log(val);
     $('.pagination.pagination-sm .page-item').removeClass('active'); // Xóa class active ở tất cả các nút paging
     var newElement = $('.pagination.pagination-sm .product-page').eq(val - 1).addClass('active');
 }

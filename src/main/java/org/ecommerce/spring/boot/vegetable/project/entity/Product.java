@@ -1,10 +1,7 @@
 package org.ecommerce.spring.boot.vegetable.project.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
@@ -22,6 +19,7 @@ public class Product {
     @Column(length = 1000000000)
     private byte[] image;
 
+    @NonNull
     private Boolean isSale;
     private Integer salePercent;
     @Transient

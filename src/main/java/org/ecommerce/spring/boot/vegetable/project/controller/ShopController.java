@@ -7,10 +7,7 @@ import org.ecommerce.spring.boot.vegetable.project.service.CategoryService;
 import org.ecommerce.spring.boot.vegetable.project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -33,8 +30,36 @@ public class ShopController {
         modelAndView.addObject("request", request);
         return modelAndView;
     }
+
     @GetMapping("/getProductSaleOffList/{categoryName}")
     public List<Product> getProductSaleOffList(@PathVariable String categoryName) {
         return productService.getProductSaleOffList(categoryName);
     }
+
+    @GetMapping("/getProductList/{pageNumber}")
+    public List<Product> getProductList(@PathVariable Integer pageNumber,
+                                        @RequestParam Integer min,
+                                        @RequestParam Integer max,
+                                        @RequestParam String categoryName,
+                                        @RequestParam String sort) {
+        return productService.getProductList(pageNumber, 12, min, max, categoryName, sort);
+    }
+
+    @GetMapping("/getProductSize")
+    public Long getProductSize(@RequestParam double min,
+                               @RequestParam double max,
+                               @RequestParam String categoryName) {
+        return productService.getProductSize(min, max, categoryName);
+    }
+
+    @GetMapping("/getTotalPages")
+    public Long getTotalPages(@RequestParam double min, @RequestParam double max, @RequestParam String categoryName) {
+        return productService.getTotalPagesAll(min, max, 12, categoryName);
+    }
+
+    @GetMapping("/getLatestProduct")
+    public List<Product> getLatestProduct() {
+        return productService.getLatestProduct();
+    }
+
 }

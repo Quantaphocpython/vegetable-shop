@@ -91,10 +91,8 @@ public class HomeController {
     }
 
     @GetMapping("/getProductList/{pageNumber}")
-    @ResponseBody
     public List<Product> getProductList(@PathVariable Integer pageNumber) {
-        ModelAndView modelAndView = new ModelAndView("home");
-        List<Product> products = productService.getProductList(pageNumber);
+        List<Product> products = productService.getProductList(pageNumber, 8, 1, 1000, "ALL", "id-inc");
         return products;
     }
 
@@ -123,7 +121,7 @@ public class HomeController {
     @GetMapping("/getTotalPagesAll")
     @ResponseBody
     public Long getTotalPagesAll() {
-        long totalPage = productService.getTotalPagesAll();
+        long totalPage = productService.getTotalPagesAll(1, 1000, 8, "All");
         return totalPage;
     }
 
