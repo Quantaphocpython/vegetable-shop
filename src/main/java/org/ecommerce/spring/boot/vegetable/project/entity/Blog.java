@@ -7,8 +7,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 @Entity
 @Data
@@ -26,6 +28,9 @@ public class Blog {
     @Column(nullable = false)
     @DateTimeFormat(pattern = "MM-dd, YYYY")
     private Date createDate;
+
+    @Transient
+    private String formattedDate;
 
     @Lob
     @Column(length = 1000000000)
@@ -62,5 +67,12 @@ public class Blog {
     @PrePersist
     private void onCreate() {
         createDate = new Date();
+    }
+
+
+    @PostLoad
+    private void formatDate() {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM dd, yyyy", Locale.ENGLISH);
+        this.formattedDate = dateFormat.format(createDate);
     }
 }

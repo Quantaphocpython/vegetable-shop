@@ -146,7 +146,7 @@
                     <img th:src="@{'/getBlogImage/' + ${blog.id}}" class="blog-item-image gt-5">
                     <div class="createDate mt-3 mb-3">
                         <i class="bi bi-calendar createDate-icon"></i>
-                        <h5 th:text="${#dates.format(blog.getCreateDate(), 'MMMM dd, yyyy')}" class="createDate-time"></h5>
+                        <h5 th:text="${blog.formattedDate}" class="createDate-time"></h5>
                     </div>
                     <a th:text="${blog.getTitle()}" class="blog-item-title mb-3" href="#" th:title="${blog.getTitle()}"></a>
                     <p class="blog-item-content mb-3" th:text="${blog.getContent()}"></p>

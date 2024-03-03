@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" th:lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script th:src="@{/js/home.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/page_title_img.css}">
+    <link rel="stylesheet" th:href="@{css/footer.css}">
+    <link rel="stylesheet" th:href="@{css/shop.css}">
+    <link rel="stylesheet" th:href="@{css/blog.css}">
+</head>
+<body>
+    <div th:insert="fragments/fragments :: header"></div>
+    <div class="container col-9 search-content">
+        <div th:insert="home :: header-search-bar"></div>
+    </div>
+    <div th:insert="fragments/fragments :: page-title-image"></div>
+
+    <div class="container col-9 search-content">
+        <div class="row">
+            <div class="col-4">
+                <div class="blog-search-wrapper d-flex w-100 mt-5">
+                    <input type="search" class="blog-search-content" placeholder="Search...">
+                    <a class="blog-search-icon">
+                        <i class="bi bi-search"></i>
+                    </a>
+                </div>
+                <h5 class="category-list-title mt-5">Category</h5>
+                <ul class="category-list-item-wrapper">
+                    <li class="category-list-item">
+                        <a th:onclick="|blogChoose(0);getAllBlog('ALL', 0)|"
+                           class="category-list-item-link active">
+                            ALL
+                        </a>
+                    </li>
+                    <li th:each="blogCategory, stat : ${blogCategories}" class="category-list-item">
+                        <a th:text="${#strings.toUpperCase(blogCategory)}"
+                           th:attr="onclick=|blogChoose(${stat.index + 1});
+                           getAllBlog('${blogCategory}', 0)|"
+                           class="category-list-item-link">
+                        </a>
+                    </li>
+                </ul>
+                <!--Recent news-->
+                <h5 class="category-list-title mt-5">Recent News</h5>
+                <div class="recent_news-wrapper">
+
+                </div>
+            </div>
+        <!--      Blog view      -->
+            <div class="col-8">
+                <div class="row blog-wrapper gt-5">
+
+                </div>
+                <nav aria-label="...">
+                    <ul class="pagination pagination-sm justify-content-center">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+
+    <script type="text/javascript" th:src="@{/js/blog.js}"></script>
+</body>
+</html>

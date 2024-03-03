@@ -33,11 +33,11 @@ body {
     color: #1c1c1c;
     text-decoration: none;
     cursor: pointer;
-    transition: all ease 1s;
+    transition: all ease 0.8s;
 }
 
 .category-list-item-link.active {
-    color: #7fad39;
+    color: #DD2222;
     font-weight: bold;
     font-size: 20px;
     padding: 5px 0 5px 10px;
@@ -182,6 +182,7 @@ input[type=number] {
 
 .latest-product-wrapper {
     height: fit-content;
+    position: relative;
 }
 
 .latest-product-row {
@@ -195,6 +196,23 @@ input[type=number] {
 .latest-product-img {
     height: 110px;
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+}
+
+.owl-nav {
+    position: absolute;
+    top: -76px;
+    right: 0;
+}
+
+.owl-prev, .owl-next {
+    display: inline-block;
+    font-size: 25px;
+    height: 30px;
+    width: 30px;
+    padding: 10px;
+    margin: 0 5px;
+    background-color: #F3F6FA !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
 }
 
 

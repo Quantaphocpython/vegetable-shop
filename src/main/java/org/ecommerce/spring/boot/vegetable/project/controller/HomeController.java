@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -49,7 +50,8 @@ public class HomeController {
         ModelAndView modelAndView = new ModelAndView("home");
         List<Category> categories = categoryService.getCategoryList();
         List<Banner> banners = bannerService.getBannerList();
-        List<Blog> blogs = blogService.getBlogList();
+        List<Blog> blogs = blogService.getBlogList("ALL", 0);
+        blogs = blogs.subList(blogs.size() - 3, blogs.size());
         modelAndView.addObject("categories", categories);
         modelAndView.addObject("banners", banners);
         modelAndView.addObject("blogs", blogs);

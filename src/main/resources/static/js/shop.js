@@ -121,7 +121,7 @@ function getLatestProduct() {
             $('.owl-carousel.latest-product-wrapper').owlCarousel({
                 loop: true,
                 margin: 10,
-                nav: false,
+                nav: true,
                 dots: true,
                 autoplay: true,
                 autoplayTimeout:4000,
