@@ -100,7 +100,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item col-2">
-                                    <a class="nav-link header-menu-item-btn" href="#">CONTACT</a>
+                                    <a class="nav-link header-menu-item-btn" th:href="@{/contact}"
+                                       th:classappend="${request.getRequestURL().toString().contains('contact')} ? 'active':''">
+                                        CONTACT
+                                    </a>
                                 </li>
                             </ul>
 
@@ -121,10 +124,13 @@
         <div class="page-title-wrapper">
             <img th:src="@{/img/breadcrumb.jpg.webp}" class="page-title-img">
             <h2 class="page-title"
-                th:text="${request.getRequestURL().toString().contains('shop')} ? 'Ogani Shop':''">
+                th:text="${request.getRequestURL().toString().contains('shop')} ? 'OGANI SHOP':''">
             </h2>
             <h2 class="page-title"
                 th:text="${request.getRequestURL().toString().contains('blog')} ? 'BLOG':''">
+            </h2>
+            <h2 class="page-title"
+                th:text="${request.getRequestURL().toString().contains('contact')} ? 'CONTACT US':''">
             </h2>
         </div>
     </div>

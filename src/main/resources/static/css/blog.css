@@ -59,6 +59,12 @@ body {
 }
 
 .recent_news-title {
+    display: -webkit-box;
+    line-height: 20px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    clear: both;
+    overflow: hidden;
     font-weight: bold;
     font-size: 16px;
 }

@@ -1,0 +1,41 @@
+
+
+.contact-wrapper {
+
+}
+
+.contact-item_icon {
+    font-size: 40px;
+    color: #7fad39;
+    filter: drop-shadow(1px 1px rgba(0, 0, 0, 0.1));
+}
+
+.contact-item_name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.contact-item_infor {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.contact-map-wrapper {
+    height: 500px;
+    width: 100%;
+    margin-top: 80px;
+    position: relative;
+}
+
+.contact-map-marker {
+    width: fit-content;
+    height: fit-content;
+    font-size: 45px;
+    color: rgb(233,68,52);
+    position: absolute;
+    top: 41%;
+    left: 58%;
+    transform: translate(-50%, -50%);
+    letter-spacing: 0;
+}

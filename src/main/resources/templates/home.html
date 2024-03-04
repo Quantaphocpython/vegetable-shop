@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html th:lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Home</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
@@ -12,204 +12,201 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" th:href="@{/css/header.css}">
     <link rel="stylesheet" th:href="@{/css/home.css}">
-    <link >
+    <link>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script th:src="@{/js/home.js}"></script>
     <link rel="stylesheet" th:href="@{css/footer.css}">
 </head>
 <body>
-    <div th:insert="fragments/fragments :: header"></div>
-    <div class="container col-9 search-content">
-        <div class="row" th:fragment="header-search-bar">
-            <div class="dropdown search-content-department-wrapper col-3">
-                <a class="btn btn-secondary dropdown-toggle search-content-department" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    <i class="bi bi-list" style="margin-right: 10px"></i>
-                    All departments
-                </a>
+<div th:insert="fragments/fragments :: header"></div>
+<div class="container col-9 search-content">
+    <div class="row" th:fragment="header-search-bar">
+        <div class="dropdown search-content-department-wrapper col-3">
+            <a class="btn btn-secondary dropdown-toggle search-content-department" href="#" role="button"
+               data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-list" style="margin-right: 10px"></i>
+                All departments
+            </a>
 
-                <ul class="dropdown-menu search-content-dropdown-list">
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Meat</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Vegetables</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Fruit & Nut Gifts</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Berries</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Ocean Foods</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Butter & Eggs</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Fast Food</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Onion</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Papayaya & Crisps</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Oatmeal</a></li>
-                    <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Bananas</a></li>
-                </ul>
-            </div>
-            <div class="col-6">
-                <form class="d-flex search-bar" role="search" >
-                    <input class="form-control me-2 search-bar-input" type="search" placeholder="What do you need?">
-                    <button class="btn btn-outline-success search-bar-submit" type="submit">SEARCH</button>
-                </form>
-            </div>
-            <div class="col-3 phone-wrapper d-flex align-items-center">
+            <ul class="dropdown-menu search-content-dropdown-list">
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Meat</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Vegetables</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Fruit & Nut Gifts</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Berries</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Ocean Foods</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Butter & Eggs</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Fast Food</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Onion</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Papayaya & Crisps</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Oatmeal</a></li>
+                <li><a class="dropdown-item search-content-dropdown-item" href="#">Fresh Bananas</a></li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <form class="d-flex search-bar" role="search">
+                <input class="form-control me-2 search-bar-input" type="search" placeholder="What do you need?">
+                <button class="btn btn-outline-success search-bar-submit" type="submit">SEARCH</button>
+            </form>
+        </div>
+        <div class="col-3 phone-wrapper d-flex align-items-center">
                 <span class="my-auto phone-icon-wrapper">
                     <i class="bi bi-telephone-fill phone-icon"></i>
                 </span>
-                <div class="phone-number-wrapper">
-                    <b>+84 938601892</b>
-                    <span style="font-size: 14px">support 24/7 time</span>
-                </div>
+            <div class="phone-number-wrapper">
+                <b>+84 938601892</b>
+                <span style="font-size: 14px">support 24/7 time</span>
             </div>
         </div>
-        <!--        -->
-        <div class="row" style="margin-top: 31px;">
-            <div class="col-3"></div>
-            <div class="banner-img col-9" style="position: relative">
-                <img th:src="@{/img/banner.jpg}" style="width: 100%; height: 431px;"/>
-                <div class="banner-text">
-                    <span class="banner-text-category">FRUIT FRESH</span>
-                    <h2 class="banner-text-title">Vegetable <br>100% Organic</h2>
-                    <p class="banner-text-description">Free Pickup and Delivery Available</p>
-                    <button class="btn banner-text-btn">SHOP NOW</button>
-                </div>
+    </div>
+    <!--        -->
+    <div class="row" style="margin-top: 31px;">
+        <div class="col-3"></div>
+        <div class="banner-img col-9" style="position: relative">
+            <img th:src="@{/img/banner.jpg}" style="width: 100%; height: 431px;"/>
+            <div class="banner-text">
+                <span class="banner-text-category">FRUIT FRESH</span>
+                <h2 class="banner-text-title">Vegetable <br>100% Organic</h2>
+                <p class="banner-text-description">Free Pickup and Delivery Available</p>
+                <button class="btn banner-text-btn">SHOP NOW</button>
             </div>
         </div>
-
-
-        <div class="mt-5 category-bar-wrapper">
-            <div class="category-bar-navigate-wrapper">
-                <button class="category-bar-navigate category-bar-navigate-left" type="button" >
-                    <i class="bi bi-chevron-compact-left"></i>
-                </button>
-                <button class="category-bar-navigate category-bar-navigate-right" type="button" >
-                    <i class="bi bi-chevron-compact-right"></i>
-                </button>
-            </div>
-            <div class="category-bar row gt-5">
-                <div class="col-3 category-wrapper p-0" th:each="category : ${categories}">
-                    <div class="text-center category-item-title-wrapper">
-                        <a class="category-item-title" th:text="${category.name}"></a>
-                    </div>
-                    <img th:src="@{'/getCategoryImage/' + ${category.id}}" class="category-item-img">
-                </div>
-            </div>
-        </div>
-    <!--Featured Product-->
-        <div class="featured-product-wrapper mt-5">
-            <div class="text-center featured-product-title">
-                Featured Product
-            </div>
-            <div class="feature-product-navigate mt-4">
-                <a class="feature-product-navigate-link mh-12 choose"
-                   th:onclick="|getAllProduct(0); choose(1); getTotalPagesAll()|"
-                   th:onload="|getAllProduct(0); choose(1); getTotalPagesAll()|">
-                    All
-                </a>
-                <a class="feature-product-navigate-link mh-12"
-                    th:onclick="|getAllProductByCategory('FRESH FRUIT', 0); choose(2); getTotalPages('FRESH FRUIT')|">
-                    Fresh Fruit
-                </a>
-                <a class="feature-product-navigate-link mh-12"
-                   th:onclick="|getAllProductByCategory('FRESH MEAT', 0); choose(3); getTotalPages('FRESH MEAT')|">
-                    Fresh Meat
-                </a>
-                <a class="feature-product-navigate-link mh-12"
-                   th:onclick="|getAllProductByCategory('FAST FOOD', 0); choose(4); getTotalPages('FAST FOOD')|">
-                    Fast Food
-                </a>
-                <a class="feature-product-navigate-link mh-12"
-                   th:onclick="|getAllProductByCategory('VEGETABLES', 0); choose(5); getTotalPages('VEGETABLES')|">
-                    Vegetables
-                </a>
-            </div>
-        <!--   nơi hiển thị product       -->
-            <div class="feature-product-item-wrapper row">
-
-            </div>
-        <!--    Product pagination    -->
-            <nav aria-label="...">
-                <ul class="pagination pagination-sm justify-content-center">
-                </ul>
-            </nav>
-        </div>
-
-    <!--    Banner    -->
-        <div class="home_banner_wrapper row mt-5">
-            <div class="col-6 home_banner gt-5" th:each="banner : ${banners}">
-                <img th:src="@{'/getBannerImage/' + ${banner.id}}" class="home_banner_image">
-            </div>
-        </div>
-
-        <!--  Blog   -->
-        <div class="blog-wrapper mt-5">
-            <div class="text-center featured-product-title">
-                From The Blog
-            </div>
-            <div class="row mt-5">
-                <div class="blog-item col-4" th:each="blog : ${blogs}">
-                    <img th:src="@{'/getBlogImage/' + ${blog.id}}" class="blog-item-image gt-5">
-                    <div class="createDate mt-3 mb-3">
-                        <i class="bi bi-calendar createDate-icon"></i>
-                        <h5 th:text="${blog.formattedDate}" class="createDate-time"></h5>
-                    </div>
-                    <a th:text="${blog.getTitle()}" class="blog-item-title mb-3" href="#" th:title="${blog.getTitle()}"></a>
-                    <p class="blog-item-content mb-3" th:text="${blog.getContent()}"></p>
-                </div>
-            </div>
-        </div>
-
     </div>
 
-    <!--    Footer    -->
-    <div th:replace="/fragments/footer :: footer"></div>
+
+    <div class="mt-5 category-bar-wrapper">
+        <div class="category-bar-navigate-wrapper">
+            <button class="category-bar-navigate category-bar-navigate-left" type="button">
+                <i class="bi bi-chevron-compact-left"></i>
+            </button>
+            <button class="category-bar-navigate category-bar-navigate-right" type="button">
+                <i class="bi bi-chevron-compact-right"></i>
+            </button>
+        </div>
+        <div class="category-bar row gt-5">
+            <div class="col-3 category-wrapper p-0" th:each="category : ${categories}">
+                <div class="text-center category-item-title-wrapper">
+                    <a class="category-item-title" th:text="${category.name}"></a>
+                </div>
+                <img th:src="@{'/getCategoryImage/' + ${category.id}}" class="category-item-img">
+            </div>
+        </div>
+    </div>
+    <!--Featured Product-->
+    <div class="featured-product-wrapper mt-5">
+        <div class="text-center featured-product-title">
+            Featured Product
+        </div>
+        <div class="feature-product-navigate mt-4">
+            <a class="feature-product-navigate-link mh-12 choose"
+               th:onclick="|getAllProduct(0); choose(1); getTotalPagesAll()|"
+               th:onload="|getAllProduct(0); choose(1); getTotalPagesAll()|">
+                All
+            </a>
+            <a class="feature-product-navigate-link mh-12"
+               th:onclick="|getAllProductByCategory('FRESH FRUIT', 0); choose(2); getTotalPages('FRESH FRUIT')|">
+                Fresh Fruit
+            </a>
+            <a class="feature-product-navigate-link mh-12"
+               th:onclick="|getAllProductByCategory('FRESH MEAT', 0); choose(3); getTotalPages('FRESH MEAT')|">
+                Fresh Meat
+            </a>
+            <a class="feature-product-navigate-link mh-12"
+               th:onclick="|getAllProductByCategory('FAST FOOD', 0); choose(4); getTotalPages('FAST FOOD')|">
+                Fast Food
+            </a>
+            <a class="feature-product-navigate-link mh-12"
+               th:onclick="|getAllProductByCategory('VEGETABLES', 0); choose(5); getTotalPages('VEGETABLES')|">
+                Vegetables
+            </a>
+        </div>
+        <!--   nơi hiển thị product       -->
+        <div class="feature-product-item-wrapper row">
+
+        </div>
+        <!--    Product pagination    -->
+        <nav aria-label="...">
+            <ul class="pagination pagination-sm justify-content-center">
+            </ul>
+        </nav>
+    </div>
+
+    <!--    Banner    -->
+    <div class="home_banner_wrapper row mt-5">
+        <div class="col-6 home_banner gt-5" th:each="banner : ${banners}">
+            <img th:src="@{'/getBannerImage/' + ${banner.id}}" class="home_banner_image">
+        </div>
+    </div>
+
+    <!--  Blog   -->
+    <div class="blog-wrapper mt-5">
+        <div class="text-center featured-product-title">
+            From The Blog
+        </div>
+        <div class="row mt-5">
+            <div class="blog-item col-4" th:each="blog : ${blogs}">
+                <img th:src="@{'/getBlogImage/' + ${blog.id}}" class="blog-item-image gt-5">
+                <div class="createDate mt-3 mb-3">
+                    <i class="bi bi-calendar createDate-icon"></i>
+                    <h5 th:text="${blog.formattedDate}" class="createDate-time"></h5>
+                </div>
+                <a th:text="${blog.getTitle()}" class="blog-item-title mb-3" href="#" th:title="${blog.getTitle()}"></a>
+                <p class="blog-item-content mb-3" th:text="${blog.getContent()}"></p>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--    Footer    -->
+<div th:replace="/fragments/footer :: footer"></div>
 
 
+<!-- Đoạn script caterogy bar   -->
+<script th:inline="javascript" type="text/javascript">
+    const categoryBar = document.querySelector(".category-bar");
+    const scrollUnit = 270;
 
+    const nl = document.querySelector(".category-bar-navigate-left");
+    nl.onclick = function () {
+        categoryBar.scrollLeft -= scrollUnit;
+    }
 
-
-    <!-- Đoạn script caterogy bar   -->
-    <script th:inline="javascript" type="text/javascript">
-        const categoryBar = document.querySelector(".category-bar");
-        const scrollUnit = 270;
-
-        const nl = document.querySelector(".category-bar-navigate-left");
-        nl.onclick = function () {
-            categoryBar.scrollLeft -= scrollUnit;
-        }
-
-        const nr = document.querySelector(".category-bar-navigate-right");
-        nr.onclick = function () {
-            if (categoryBar.scrollLeft + categoryBar.clientWidth >= categoryBar.scrollWidth) {
-                categoryBar.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                categoryBar.scrollLeft += scrollUnit;
-            }
-        }
-        const scrollRightByOneUnit = () => {
+    const nr = document.querySelector(".category-bar-navigate-right");
+    nr.onclick = function () {
+        if (categoryBar.scrollLeft + categoryBar.clientWidth >= categoryBar.scrollWidth) {
+            categoryBar.scrollTo({left: 0, behavior: 'smooth'});
+        } else {
             categoryBar.scrollLeft += scrollUnit;
-            if (categoryBar.scrollLeft + categoryBar.clientWidth >= categoryBar.scrollWidth) {
-                categoryBar.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                categoryBar.scrollLeft += scrollUnit;
-            }
+        }
+    }
+    const scrollRightByOneUnit = () => {
+        categoryBar.scrollLeft += scrollUnit;
+        if (categoryBar.scrollLeft + categoryBar.clientWidth >= categoryBar.scrollWidth) {
+            categoryBar.scrollTo({left: 0, behavior: 'smooth'});
+        } else {
+            categoryBar.scrollLeft += scrollUnit;
+        }
+    }
+
+    // Set up automatic scrolling every 5 seconds
+    setInterval(scrollRightByOneUnit, 5000);
+
+    const feature = document.querySelector(".feature-product-navigate");
+
+    function choose(val) {
+        const element = feature.querySelector(".choose");
+        if (element) {
+            element.classList.remove("choose");
         }
 
-        // Set up automatic scrolling every 5 seconds
-        setInterval(scrollRightByOneUnit, 5000);
-
-        const feature = document.querySelector(".feature-product-navigate");
-
-        function choose(val) {
-            const element = feature.querySelector(".choose");
-            if (element) {
-                element.classList.remove("choose");
-            }
-
-            const newElement = feature.querySelector(".feature-product-navigate-link:nth-child(" + val + ")");
-            if (newElement) {
-                newElement.classList.add("choose");
-            }
+        const newElement = feature.querySelector(".feature-product-navigate-link:nth-child(" + val + ")");
+        if (newElement) {
+            newElement.classList.add("choose");
         }
+    }
 
 
-
-    </script>
+</script>
 
 
 </body>
