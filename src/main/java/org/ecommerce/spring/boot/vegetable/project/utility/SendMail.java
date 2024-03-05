@@ -3,6 +3,7 @@ package org.ecommerce.spring.boot.vegetable.project.utility;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import org.ecommerce.spring.boot.vegetable.project.dto.LMessageDTO;
 import org.ecommerce.spring.boot.vegetable.project.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -37,6 +38,15 @@ public class SendMail {
                 "<a href=\"" +url+ "\">Verify account</a>"+
                 "<p> Users Registration Portal Service";
         emailMessage(subject, senderName, mailContent, user);
+    }
+
+    public void sendLeaveMessage(LMessageDTO lMessage) throws MessagingException, UnsupportedEncodingException {
+        String subject = "Leave Message";
+        String senderName = "Message from user " + lMessage.getEmail();
+        String mailContent = "<p>" + lMessage.getDescription() + "</p>";
+        emailMessage(subject, senderName, mailContent, User.builder()
+                .email("quan02042004@gmail.com")
+                .build());
     }
 
     private void emailMessage(String subject, String senderName,

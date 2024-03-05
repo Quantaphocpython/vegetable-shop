@@ -26,7 +26,7 @@
     </div>
     <div th:insert="fragments/fragments :: page-title-image"></div>
 
-    <div class="container col-9 search-content">
+    <div class="container col-9 mt-5">
         <div class="row contact-wrapper mb-5 mt-5">
             <div class="col-3 text-center">
                 <i class="bi bi-telephone contact-item_icon"></i>
@@ -55,6 +55,25 @@
                 allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-100"></iframe>
         <span class="contact-map-marker"><i class="bi bi-geo-alt-fill"></i></span>
     </div>
+
+    <div class="container col-9 mt-5">
+        <form id="contact-form">
+            <div class="text-center featured-product-title">Leave Message</div>
+            <span class="alert-info alert contact-alert mt-3">Send message success</span>
+            <div class="row mt-5">
+                <div class="col-6">
+                    <input type="text" id="name" name="name" class="contact-message-input w-100" placeholder="Your name">
+                </div>
+                <div class="col-6">
+                    <input type="email" id="email" name="email" class="contact-message-input w-100" placeholder="Your email">
+                </div>
+            </div>
+            <textarea type="text" id="description" name="description" class="contact-message-input w-100 mt-4" placeholder="Your description" rows="4" required></textarea>
+            <button class="contact-message-btn mt-3 mx-auto d-block"  onclick="showAlertLeaveMessage(event)">send message</button>
+        </form>
+    </div>
+
+
 
     <div th:replace="/fragments/footer :: footer"></div>
 

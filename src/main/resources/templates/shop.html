@@ -52,21 +52,21 @@
                 <form >
                     <div class="range-container">
                         <div class="slider-track"></div>
-                        <input class="range-slide-1" type="range" min="0" max="1000" value="0" id="slider-1" oninput="slideOne()">
-                        <input class="range-slide-2" type="range" min="0" max="1000" value="1000" id="slider-2" oninput="slideTwo()">
+                        <input class="range-slide-1" type="range" min="0" max="100" value="0" id="slider-1" oninput="slideOne()">
+                        <input class="range-slide-2" type="range" min="0" max="100" value="1000" id="slider-2" oninput="slideTwo()">
                     </div>
                     <div class="range-values">
                         <span style="color: #DD2222;font-weight: bold">$</span>
-                        <input id="range1" type="number" value="0" class="range-values-item" max="1000" min="0"
+                        <input id="range1" type="number" value="0" class="range-values-item" max="100" min="0"
                                onkeyup="rangeKeyUp()"
                         />
                         <span style="color: #DD2222;font-weight: bold;margin: 0 10px;"> &dash; </span>
                         <span style="color: #DD2222;font-weight: bold">$</span>
-                        <input id="range2" type="number" value="1000" class="range-values-item" max="1000" min="0"
+                        <input id="range2" type="number" value="1000" class="range-values-item" max="100" min="0"
                                onkeyup="rangeKeyUp()"
                         />
-                        <span class="btn btn-info" onclick="findByCostBetweenAndSort()">Find</span>
-                        <span class="btn btn-info" onclick="reset()">Reset</span>
+                        <span class="btn btn-info" style="color: white" onclick="findByCostBetweenAndSort()">Find</span>
+                        <span class="btn btn-info" style="color: white" onclick="reset()">Reset</span>
                     </div>
                 </form>
 

@@ -38,7 +38,7 @@
                 <h5 class="category-list-title mt-5">Category</h5>
                 <ul class="category-list-item-wrapper">
                     <li class="category-list-item">
-                        <a th:onclick="|blogChoose(0);getAllBlog('ALL', 0)|"
+                        <a th:onclick="|blogChoose(0);renderBlog('ALL')|"
                            class="category-list-item-link active">
                             ALL
                         </a>
@@ -46,7 +46,7 @@
                     <li th:each="blogCategory, stat : ${blogCategories}" class="category-list-item">
                         <a th:text="${#strings.toUpperCase(blogCategory)}"
                            th:attr="onclick=|blogChoose(${stat.index + 1});
-                           getAllBlog('${blogCategory}', 0)|"
+                           renderBlog('${blogCategory}')|"
                            class="category-list-item-link">
                         </a>
                     </li>

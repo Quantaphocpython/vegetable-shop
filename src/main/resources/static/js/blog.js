@@ -29,6 +29,11 @@ function getAllBlog(blogCategoryName, pageNumber) {
     })
 }
 
+function renderBlog(blogCategoryName) {
+    getAllBlog(blogCategoryName, 0);
+    showPages(blogCategoryName);
+}
+
 function showPages(blogCategoryName) {
     $.ajax({
         type: "GET",
