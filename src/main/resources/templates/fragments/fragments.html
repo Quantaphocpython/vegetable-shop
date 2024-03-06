@@ -120,8 +120,8 @@
         </div>
     </div>
 
-    <div th:fragment="page-title-image">
-        <div class="page-title-wrapper">
+    <div >
+        <div class="page-title-wrapper" th:fragment="page-title-image">
             <img th:src="@{/img/breadcrumb.jpg.webp}" class="page-title-img">
             <h2 class="page-title"
                 th:text="${request.getRequestURL().toString().contains('shop')} ? 'OGANI SHOP':''">

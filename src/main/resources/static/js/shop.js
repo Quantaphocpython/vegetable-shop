@@ -1,13 +1,38 @@
 // ready function
+
 $(document).ready(function(){
     getProductSaleOffList("ALL");
     slideOne();
     slideTwo();
     rangeKeyUp();
-    getAllProduct(0, 1000, "0", "ALL");
-    showPages(0, 1000, "ALL");
+    // getAllProduct(0, 1000, "0", "ALL");
+    loadProductByCategory();
+    // showPages(0, 1000, "ALL");
     getLatestProduct();
 });
+
+
+function loadProductByCategory() {
+    const path = document.location.search;
+    var number = "";
+    if(path.includes("number")) {
+        number = path.at(path.length - 1);
+        number = parseInt(number);
+        var res = document.querySelectorAll(".category-list-item-link")[number]
+        res.click();
+        getAllProduct(0, 1000, 0, res.innerHTML)
+        document.getElementById('product-view').scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+        showPages(0, 1000, res.innerHTML);
+    }
+    else {
+        getAllProduct(0, 1000, "0", "ALL");
+        showPages(0, 1000, 'ALL');
+    }
+}
+
 
 function getAllProduct(min, max, pageNumber, categoryName, sort) {
     $.ajax({

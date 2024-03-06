@@ -62,4 +62,11 @@ public class ShopController {
         return productService.getLatestProduct();
     }
 
+    @GetMapping("/goShopCategory")
+    public ModelAndView goShopCategory(@RequestParam Integer number) {
+        ModelAndView modelAndView = new ModelAndView("shop");
+        modelAndView.addObject("number", number);
+        return modelAndView;
+    }
+
 }

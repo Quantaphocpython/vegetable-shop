@@ -123,7 +123,7 @@ public class HomeController {
     @GetMapping("/getTotalPagesAll")
     @ResponseBody
     public Long getTotalPagesAll() {
-        long totalPage = productService.getTotalPagesAll(1, 1000, 8, "All");
+        long totalPage = productService.getTotalPagesAll(1, 1000, 8, "ALL");
         return totalPage;
     }
 
@@ -162,6 +162,7 @@ public class HomeController {
                 .contentType(MediaType.valueOf("image/png"))
                 .body(image);
     }
+
 
 }
 

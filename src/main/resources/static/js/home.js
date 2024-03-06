@@ -1,3 +1,9 @@
+
+$(document).ready(function(){
+    getAllProduct(0)
+    getTotalPagesAll();
+});
+
 function getAllProductByCategory(categoryName, pageNumber) {
     $.ajax({
         type: "GET",
@@ -18,10 +24,7 @@ function getAllProductByCategory(categoryName, pageNumber) {
     });
 }
 
-$(document).ready(function(){
-    getAllProduct(0); // This will run the getAllProduct function when the document is fully loaded
-    getTotalPagesAll();
-});
+
 
 function getAllProduct(pageNumber) {
     $.ajax({
