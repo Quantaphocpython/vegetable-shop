@@ -30,8 +30,8 @@
         <div class="row">
             <div class="col-4" th:fragment="blogLeft">
                 <div class="blog-search-wrapper d-flex w-100 mt-5">
-                    <input type="search" class="blog-search-content" placeholder="Search...">
-                    <a class="blog-search-icon">
+                    <input type="search" class="blog-search-content" placeholder="Search..." th:onkeypress="|handleKeyPress(event)|">
+                    <a class="blog-search-icon" onclick="renderSearchBlog()">
                         <i class="bi bi-search"></i>
                     </a>
                 </div>
@@ -67,6 +67,11 @@
                     </ul>
                 </nav>
             </div>
+        </div>
+        <hr />
+        <!--    Blog relate blogDetail    -->
+        <div class="blog-post-like row">
+
         </div>
     </div>
     <div th:insert="fragments/footer :: footer"></div>

@@ -31,6 +31,14 @@ public class ShopController {
         return modelAndView;
     }
 
+    @GetMapping("/product/{id}")
+    public ModelAndView productDetail(@PathVariable Long id, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("productDetail");
+
+        modelAndView.addObject("request", request);
+        return modelAndView;
+    }
+
     @GetMapping("/getProductSaleOffList/{categoryName}")
     public List<Product> getProductSaleOffList(@PathVariable String categoryName) {
         return productService.getProductSaleOffList(categoryName);
@@ -67,6 +75,19 @@ public class ShopController {
         ModelAndView modelAndView = new ModelAndView("shop");
         modelAndView.addObject("number", number);
         return modelAndView;
+    }
+
+    @GetMapping("/productDetail/{id}")
+    public Product getProductDetail(@PathVariable Long id) {
+        Product product = productService.findProductById(id);
+        return product;
+    }
+
+    @GetMapping("/getProductByCategory")
+    public List<Product> getProductByCategory(@RequestParam Long categoryId,
+                                              @RequestParam Long productId) {
+        List<Product> products = productService.getProductByCategory(categoryId, productId);
+        return products;
     }
 
 }

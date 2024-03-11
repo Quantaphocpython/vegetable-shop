@@ -14,7 +14,7 @@ function getAllProductByCategory(categoryName, pageNumber) {
                 productHTML += "<div class=\"feature-product-item col-3 gt-5\">";
                 productHTML += "<img src='/getProductImage/" + product.id + "' alt='' class='feature-product-item-img'>";
                 productHTML += "<div class=\"feature-product-item-text\">";
-                productHTML += "<a class=\"feature-product-item-title text-center d-block\">" + product.name + "</a>";
+                productHTML += "<a class=\"feature-product-item-title text-center d-block\" href='/shop/product/"+ product.id +"'>" + product.name + "</a>";
                 productHTML += "<h5 class=\"feature-product-item-cost text-center\">" + "$" + product.cost + ".00</h5>";
                 productHTML += "</div>";
                 productHTML += "</div>";
@@ -36,7 +36,7 @@ function getAllProduct(pageNumber) {
                 productHTML += "<div class=\"feature-product-item col-3 gt-5\">";
                 productHTML += "<img src='/getProductImage/" + product.id + "' alt='' class='feature-product-item-img'>";
                 productHTML += "<div class=\"feature-product-item-text\">";
-                productHTML += "<a class=\"feature-product-item-title text-center d-block\">" + product.name + "</a>";
+                productHTML += "<a class=\"feature-product-item-title text-center d-block\" href='/shop/product/"+ product.id +"'>" + product.name + "</a>";
                 productHTML += "<h5 class=\"feature-product-item-cost text-center\">" + "$" + product.cost + ".00</h5>";
                 productHTML += "</div>";
                 productHTML += "</div>";

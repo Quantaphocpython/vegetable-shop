@@ -25,4 +25,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     Page<Product> findAllByCostBetweenAndCategory(double min, double max, Category category, Pageable pageable);
 
     Long countByCostBetweenAndCategory(double min, double max, Category category);
+
+    Page<Product> findByCategoryAndIdNot(Category category, Long productId, Pageable page);
 }

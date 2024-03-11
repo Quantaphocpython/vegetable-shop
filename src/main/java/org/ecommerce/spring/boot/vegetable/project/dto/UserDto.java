@@ -22,5 +22,4 @@ public class UserDto {
 
     @NotEmpty(message = "Confirm password should not be empty")
     private String confirmPassword;
-
 }

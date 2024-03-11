@@ -4,9 +4,11 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.ecommerce.spring.boot.vegetable.project.entity.Blog;
 import org.ecommerce.spring.boot.vegetable.project.entity.BlogCategory;
 import org.ecommerce.spring.boot.vegetable.project.entity.Category;
+import org.ecommerce.spring.boot.vegetable.project.entity.User;
 import org.ecommerce.spring.boot.vegetable.project.service.BlogCategoryService;
 import org.ecommerce.spring.boot.vegetable.project.service.BlogService;
 import org.ecommerce.spring.boot.vegetable.project.service.CategoryService;
+import org.ecommerce.spring.boot.vegetable.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,20 +31,12 @@ public class BlogController {
     @Autowired
     private CategoryService categoryService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping
     public ModelAndView blog(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("blog");
-        List<String> blogCategories = blogCategoryService.getBlogCategory();
-        List<Category> categories = categoryService.getCategoryList();
-        modelAndView.addObject("blogCategories", blogCategories);
-        modelAndView.addObject("categories", categories);
-        modelAndView.addObject("request", request);
-        return modelAndView;
-    }
-
-    @GetMapping("/blogDetail")
-    public ModelAndView  blogDetail(HttpServletRequest request) {
-        ModelAndView modelAndView = new ModelAndView("blogDetail");
         List<String> blogCategories = blogCategoryService.getBlogCategory();
         List<Category> categories = categoryService.getCategoryList();
         modelAndView.addObject("blogCategories", blogCategories);
@@ -65,6 +59,36 @@ public class BlogController {
     @GetMapping("/getTotalPages")
     public Long getTotalPages(@RequestParam String blogCategoryName) {
         return blogService.getTotalPages(blogCategoryName);
+    }
+
+    @GetMapping("/findBlogById")
+    public Blog findBlogById(@RequestParam Integer blogId) {
+        Blog blog = blogService.findBlogById(blogId);
+        return blog;
+    }
+
+    @GetMapping("/findUserById")
+    public User findUserById(@RequestParam Long id) {
+        User user = userService.findUserById(id);
+        return user;
+    }
+
+    @GetMapping("/searchBlog")
+    public List<Blog> searchBlogByTitle(@RequestParam String blogTitle,
+                                        @RequestParam Integer pageNumber) {
+        List<Blog> blogs = blogService.searchBlogByTitle(blogTitle, pageNumber);
+        return blogs;
+    }
+
+    @GetMapping("/getBlogSearchToTalPages")
+    public Long getBlogSearchToTalPages(@RequestParam String blogTitle) {
+        return blogService.getBlogSearchToTalPages(blogTitle);
+    }
+
+    @GetMapping("/getBlogByBlogCategories")
+    public List<Blog> getBlogByBlogCategories(@RequestParam Long blogId) {
+        List<Blog> blogs = blogService.getBlogByBlogCategories(blogId);
+        return blogs;
     }
 
 }

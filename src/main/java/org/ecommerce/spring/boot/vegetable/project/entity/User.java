@@ -2,6 +2,7 @@ package org.ecommerce.spring.boot.vegetable.project.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.Length;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +28,10 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Lob
+    @Column(length = 1000000000)
+    private byte[] image;
 
     @ManyToMany(
             fetch = FetchType.EAGER,

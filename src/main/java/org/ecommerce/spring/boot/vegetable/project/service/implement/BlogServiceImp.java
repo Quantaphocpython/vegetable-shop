@@ -84,6 +84,32 @@ public class BlogServiceImp implements BlogService {
         return (long) blogRepository.findByBlogCategoriesIn(blogCategory.getId(), page).getTotalPages();
     }
 
+    @Override
+    public Blog findBlogById(Integer blogId) {
+        Optional<Blog> blog = blogRepository.findById(Long.valueOf(blogId));
+        return blog.get();
+    }
+
+    @Override
+    public List<Blog> searchBlogByTitle(String blogTitle, Integer pageNumber) {
+        Pageable page = PageRequest.of(pageNumber, 6);
+        List<Blog> blog = blogRepository.searchBlogByTitle(blogTitle, page).getContent();
+        return blog;
+    }
+
+    @Override
+    public Long getBlogSearchToTalPages(String blogTitle) {
+        Pageable page = PageRequest.of(0, 6);
+        return (long) blogRepository.searchBlogByTitle(blogTitle, page).getTotalPages();
+    }
+
+    @Override
+    public List<Blog> getBlogByBlogCategories(Long blogId) {
+        Pageable page = PageRequest.of(0, 3, Sort.by(Sort.Direction.DESC, "id"));
+        List<Blog> blogs = blogRepository.getBlogByBlogCategories(blogId, page).getContent();
+        return blogs;
+    }
+
     private List<BlogCategory> blogCategoryChangeList(String blogCategoryString) {
         List<String> blogCategoryNames = List.of(blogCategoryString.split(","));
         List<BlogCategory> blogCategories = new ArrayList<>();

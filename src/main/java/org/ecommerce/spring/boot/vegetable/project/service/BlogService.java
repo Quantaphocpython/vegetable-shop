@@ -18,4 +18,12 @@ public interface BlogService {
     List<Blog> getRecentNews();
 
     Long getTotalPages(String blogCategoryName);
+
+    Blog findBlogById(Integer blogId);
+
+    List<Blog> searchBlogByTitle(String blogTitle, Integer pageNumber);
+
+    Long getBlogSearchToTalPages(String blogTitle);
+
+    List<Blog> getBlogByBlogCategories(Long blogId);
 }

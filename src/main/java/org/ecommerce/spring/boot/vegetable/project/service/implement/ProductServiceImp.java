@@ -109,4 +109,18 @@ public class ProductServiceImp implements ProductService {
 
         return productRepository.findAll(pageRequest).getContent();
     }
+
+    @Override
+    public Product findProductById(Long id) {
+        Product product = productRepository.findById(id).get();
+        return product;
+    }
+
+    @Override
+    public List<Product> getProductByCategory(Long categoryId, Long productId) {
+        Pageable page = PageRequest.of(0, 4, Sort.by(Sort.Direction.DESC, "id"));
+        Category category = categoryRepository.findById(categoryId).get();
+        List<Product> products = productRepository.findByCategoryAndIdNot(category, productId, page).getContent();
+        return products;
+    }
 }

@@ -14,9 +14,9 @@ $(document).ready(function(){
 
 function loadProductByCategory() {
     const path = document.location.search;
-    var number = "";
+    var match = path.match(/number=(\d+)/);
+    var number = match ? match[1] : null;
     if(path.includes("number")) {
-        number = path.at(path.length - 1);
         number = parseInt(number);
         var res = document.querySelectorAll(".category-list-item-link")[number]
         res.click();
@@ -44,7 +44,7 @@ function getAllProduct(min, max, pageNumber, categoryName, sort) {
                 productHTML += "<div class=\"feature-product-item col-4 gt-5\">";
                 productHTML += "<img src='/getProductImage/" + product.id + "' alt='' class='feature-product-item-img'>";
                 productHTML += "<div class=\"feature-product-item-text\">";
-                productHTML += "<a class=\"feature-product-item-title text-center d-block\">" + product.name + "</a>";
+                productHTML += "<a class=\"feature-product-item-title text-center d-block\" href='/shop/product/"+ product.id +"'   >" + product.name + "</a>";
                 productHTML += "<h5 class=\"feature-product-item-cost text-center\">" + "$" + product.cost + ".00</h5>";
                 productHTML += "</div>";
                 productHTML += "</div>";
@@ -131,7 +131,7 @@ function getLatestProduct() {
                     "                            <img src=\"/getProductImage/"+ product.id +"\" alt=\"\" class=\"w-100 latest-product-img\">" +
                     "                        </div>" +
                     "                        <div class=\"col-6\">" +
-                    "                            <a class=\"feature-product-item-title text-center d-block\">"+ product.name +"</a>" +
+                    "                            <a class=\"feature-product-item-title text-center d-block\" href='/shop/product/"+ product.id +"'>"+ product.name +"</a>" +
                     "                            <h5 class=\"feature-product-item-cost text-center \">"+
                                                 (product.isSale == true ? formatNumberWithDecimal(product.saleCost, 2) :
                                                     formatNumberWithDecimal(product.cost, 2)) +"</h5>" +
@@ -170,7 +170,7 @@ function getProductSaleOffList(categoryName) {
                 productHTML += "<img src='/getProductImage/" + product.id + "' alt='' class='feature-product-item-img'>";
                 productHTML += "<span class='feature-product-item-sale_percent'>-"+ product.salePercent + "%</span>";
                 productHTML += "<div class=\"feature-product-item-text\">";
-                productHTML += "<a class=\"feature-product-item-title text-center d-block\">" + product.name + "</a>";
+                productHTML += "<a class=\"feature-product-item-title text-center d-block\" href='/shop/product/"+ product.id +"'>" + product.name + "</a>";
                 productHTML += "<div class='text-center'>"
                 productHTML += "<h5 class=\"feature-product-item-cost d-inline-block\">" + "$" + formatNumberWithDecimal(product.saleCost, 2) + "</h5>";
                 productHTML += "<span class='feature-product-item-cost-prev d-inline-block'>$"+ formatNumberWithDecimal(product.cost, 2) +"</span>";
@@ -247,6 +247,7 @@ function rangeKeyUp() {
     sliderTwo.value = displayValTwo.value;
     fillColor();
 }
+
 
 
 

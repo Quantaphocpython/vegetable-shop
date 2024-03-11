@@ -1,6 +1,7 @@
 package org.ecommerce.spring.boot.vegetable.project.service;
 
 import org.ecommerce.spring.boot.vegetable.project.dto.ProductDto;
+import org.ecommerce.spring.boot.vegetable.project.entity.Category;
 import org.ecommerce.spring.boot.vegetable.project.entity.Product;
 
 import java.io.IOException;
@@ -24,4 +25,8 @@ public interface ProductService {
     Long getProductSize(double min, double max, String categoryName);
 
     List<Product> getLatestProduct();
+
+    Product findProductById(Long id);
+
+    List<Product> getProductByCategory(Long categoryId, Long productId);
 }

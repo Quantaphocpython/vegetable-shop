@@ -20,6 +20,7 @@ body {
 
 .blog-search-icon {
     display: block;
+    cursor: pointer;
     width: 20%;
     height: 100%;
     font-size: 18px;
@@ -44,11 +45,18 @@ body {
     border: 1px solid white;
 }
 
+.blog-item-title {
+    cursor: pointer;
+    line-height: 28px;
+}
+
+
 .recent_news-wrapper {
 
 }
 
 .recent_news-item {
+    cursor: pointer;
     text-decoration: none;
     color: black;
     margin: 10px 0;
@@ -71,5 +79,28 @@ body {
 
 .recent_news-time {
     font-size: 13px;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.blog_detail-title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.blog_detail-content {
+    color: rgba(0, 0, 0, 0.7);
+    font-size: 18px;
+}
+
+.blog_detail-text {
+    font-size: 16px;
+}
+
+.blog_detail-image {
+    height: 92px;
+    padding: 5px 5px 10px 5px;
+}
+
+.blog_detail-role {
     color: rgba(0, 0, 0, 0.5);
 }

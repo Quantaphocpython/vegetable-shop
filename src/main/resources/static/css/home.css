@@ -318,6 +318,7 @@
 }
 
 .feature-product-item-title {
+    cursor: pointer;
     font-size: 16px;
     font-weight: unset;
     text-decoration: none;
