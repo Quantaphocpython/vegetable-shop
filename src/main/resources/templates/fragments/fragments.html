@@ -123,7 +123,11 @@
         <div class="page-title-wrapper" th:fragment="page-title-image">
             <img th:src="@{/img/breadcrumb.jpg.webp}" class="page-title-img">
             <h2 class="page-title"
-                th:text="${request.getRequestURL().toString().contains('shop')} ? 'OGANI SHOP':''">
+                th:text="${request.getRequestURL().toString().contains('shop') &&
+                            !request.getRequestURL().toString().contains('shoppingCart')} ? 'OGANI SHOP':''">
+            </h2>
+            <h2 class="page-title"
+                th:text="${request.getRequestURL().toString().contains('shoppingCart')} ? 'Shopping Cart':''">
             </h2>
             <h2 class="page-title"
                 th:text="${request.getRequestURL().toString().contains('blog')} ? 'BLOG':''">

@@ -23,7 +23,9 @@ public class SecurityConfig {
 
     private final static String[] paths = {
         "/**",
+        "/js/**",
         "/error",
+        "/shop/**",
         "/login",
         "/registration/**",
         "/img/**",
@@ -35,7 +37,9 @@ public class SecurityConfig {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
-                        author -> author.requestMatchers(paths).permitAll()
+                        author -> author
+                                .requestMatchers("/shop/order").authenticated()
+                                .requestMatchers(paths).permitAll()
                                 .anyRequest().authenticated()
                 )
                 .formLogin(

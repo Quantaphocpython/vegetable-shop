@@ -2,10 +2,17 @@ package org.ecommerce.spring.boot.vegetable.project.service.implement;
 
 import org.ecommerce.spring.boot.vegetable.project.dto.ProductDto;
 import org.ecommerce.spring.boot.vegetable.project.entity.Category;
+import org.ecommerce.spring.boot.vegetable.project.entity.Order;
+import org.ecommerce.spring.boot.vegetable.project.entity.OrderItem;
 import org.ecommerce.spring.boot.vegetable.project.entity.Product;
 import org.ecommerce.spring.boot.vegetable.project.repository.CategoryRepository;
+import org.ecommerce.spring.boot.vegetable.project.repository.OrderRepository;
 import org.ecommerce.spring.boot.vegetable.project.repository.ProductRepository;
+import org.ecommerce.spring.boot.vegetable.project.repository.UserRepository;
+import org.ecommerce.spring.boot.vegetable.project.service.OrderItemService;
+import org.ecommerce.spring.boot.vegetable.project.service.OrderService;
 import org.ecommerce.spring.boot.vegetable.project.service.ProductService;
+import org.ecommerce.spring.boot.vegetable.project.service.UserService;
 import org.ecommerce.spring.boot.vegetable.project.utility.ImageUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -13,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.swing.plaf.BorderUIResource;
 import java.io.IOException;
 import java.util.List;
 
@@ -21,12 +29,16 @@ public class ProductServiceImp implements ProductService {
 
     @Autowired
     private ProductRepository productRepository;
-
     @Autowired
     private ImageUtils imageUtils;
-
     @Autowired
     private CategoryRepository categoryRepository;
+    @Autowired
+    private OrderItemService orderItemService;
+    @Autowired
+    private OrderRepository orderRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     public Product addProduct(ProductDto productDto) throws IOException {
@@ -122,5 +134,26 @@ public class ProductServiceImp implements ProductService {
         Category category = categoryRepository.findById(categoryId).get();
         List<Product> products = productRepository.findByCategoryAndIdNot(category, productId, page).getContent();
         return products;
+    }
+
+    @Override
+    public String order(Long productId, Integer quantity, Long userId) {
+        OrderItem orderItem = OrderItem.builder()
+                .productId(productId)
+                .quantity(quantity)
+                .build();
+        Order order = orderRepository.findOrderByUserIdAndStatusNotYet(userId);
+        if(order == null) {
+            Order userOrder = Order.builder()
+                    .status("not yet")
+                    .user(userRepository.findById(userId).get())
+                    .orderItems(List.of(orderItem))
+                    .build();
+            orderRepository.save(userOrder);
+        }
+        else {
+            order.addOrderItem(orderItem);
+        }
+        return "success";
     }
 }

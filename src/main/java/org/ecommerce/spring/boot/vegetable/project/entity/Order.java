@@ -1,13 +1,13 @@
 package org.ecommerce.spring.boot.vegetable.project.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.aspectj.weaver.ast.Or;
+
+import java.util.List;
 
 @Entity
 @Data
@@ -20,4 +20,21 @@ public class Order {
     private Long id;
     private String status;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "order_id",
+            referencedColumnName = "id"
+    )
+    private List<OrderItem> orderItems;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(
+            name = "user_id",
+            referencedColumnName = "id"
+    )
+    private User user;
+
+    public void addOrderItem(OrderItem orderItem) {
+        orderItems.add(orderItem);
+    }
 }

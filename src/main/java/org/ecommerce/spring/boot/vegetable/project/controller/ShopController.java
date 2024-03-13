@@ -2,11 +2,13 @@ package org.ecommerce.spring.boot.vegetable.project.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.ecommerce.spring.boot.vegetable.project.entity.Category;
+import org.ecommerce.spring.boot.vegetable.project.entity.OrderItem;
 import org.ecommerce.spring.boot.vegetable.project.entity.Product;
 import org.ecommerce.spring.boot.vegetable.project.service.CategoryService;
 import org.ecommerce.spring.boot.vegetable.project.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -34,9 +36,20 @@ public class ShopController {
     @GetMapping("/product/{id}")
     public ModelAndView productDetail(@PathVariable Long id, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("productDetail");
-
+        List<Category> categories = categoryService.getCategoryList();
+        modelAndView.addObject("categories", categories);
         modelAndView.addObject("request", request);
         return modelAndView;
+    }
+
+    @GetMapping("/shoppingCart")
+    public ModelAndView shoppingCart(HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("shoppingCart");
+        List<Category> categories = categoryService.getCategoryList();
+        modelAndView.addObject("categories", categories);
+        modelAndView.addObject("request", request);
+        return modelAndView;
+
     }
 
     @GetMapping("/getProductSaleOffList/{categoryName}")
@@ -88,6 +101,13 @@ public class ShopController {
                                               @RequestParam Long productId) {
         List<Product> products = productService.getProductByCategory(categoryId, productId);
         return products;
+    }
+
+    @GetMapping("/order")
+    public String order(@RequestParam Long productId,
+                        @RequestParam Integer quantity,
+                        @RequestParam Long userId) {
+        return productService.order(productId, quantity, userId);
     }
 
 }

@@ -29,4 +29,6 @@ public interface ProductService {
     Product findProductById(Long id);
 
     List<Product> getProductByCategory(Long categoryId, Long productId);
+
+    String order(Long productId, Integer quantity, Long userId);
 }

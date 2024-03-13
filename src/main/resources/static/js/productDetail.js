@@ -39,7 +39,8 @@ function getProductDetail(id) {
                                 "<input class='product-detail_number-item text-center' type='number' value='0'/>" +
                                 "<span class='product-detail_number-item' onclick='incrementProductQuantity()'>+</span>" +
                             "</div>" +
-                            "<button class=\"btn btn-outline-success search-bar-submit product-detail_btn\" type=\"submit\">ADD TO CART</button>" +
+                            "<button class=\"btn btn-outline-success search-bar-submit product-detail_btn\" type=\"submit\" " +
+                                    "onclick='order("+ product.id + "," + $('.product-detail_number-item').value +")'>ADD TO CART</button>" +
                         "</div>" +
                         "<hr class='mt-5' />" +
                         "<div class='mt-5 product-detail_inform'>" +
@@ -69,6 +70,21 @@ function getProductDetail(id) {
 
             $('.product-detail-wrapper').html(productHTML);
             getProductByCategory(product.category.id, product.id);
+        }
+    });
+}
+
+function order(productId, quantity, userId) {
+    $.ajax({
+       type: "GET",
+        url: "/shop/order",
+        data: {
+            productId: productId,
+            quantity: quantity,
+            userId: userId
+        },
+        success: function (data) {
+           console.log(data);
         }
     });
 }
