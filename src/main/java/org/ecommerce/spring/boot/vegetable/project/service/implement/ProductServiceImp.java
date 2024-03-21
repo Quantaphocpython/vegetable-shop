@@ -1,16 +1,12 @@
 package org.ecommerce.spring.boot.vegetable.project.service.implement;
 
 import org.ecommerce.spring.boot.vegetable.project.dto.ProductDto;
-import org.ecommerce.spring.boot.vegetable.project.entity.Category;
-import org.ecommerce.spring.boot.vegetable.project.entity.Order;
-import org.ecommerce.spring.boot.vegetable.project.entity.OrderItem;
-import org.ecommerce.spring.boot.vegetable.project.entity.Product;
+import org.ecommerce.spring.boot.vegetable.project.entity.*;
 import org.ecommerce.spring.boot.vegetable.project.repository.CategoryRepository;
-import org.ecommerce.spring.boot.vegetable.project.repository.OrderRepository;
 import org.ecommerce.spring.boot.vegetable.project.repository.ProductRepository;
+import org.ecommerce.spring.boot.vegetable.project.repository.UserOrderRepository;
 import org.ecommerce.spring.boot.vegetable.project.repository.UserRepository;
 import org.ecommerce.spring.boot.vegetable.project.service.OrderItemService;
-import org.ecommerce.spring.boot.vegetable.project.service.OrderService;
 import org.ecommerce.spring.boot.vegetable.project.service.ProductService;
 import org.ecommerce.spring.boot.vegetable.project.service.UserService;
 import org.ecommerce.spring.boot.vegetable.project.utility.ImageUtils;
@@ -27,18 +23,12 @@ import java.util.List;
 @Service
 public class ProductServiceImp implements ProductService {
 
-    @Autowired
-    private ProductRepository productRepository;
-    @Autowired
-    private ImageUtils imageUtils;
-    @Autowired
-    private CategoryRepository categoryRepository;
-    @Autowired
-    private OrderItemService orderItemService;
-    @Autowired
-    private OrderRepository orderRepository;
-    @Autowired
-    private UserRepository userRepository;
+    @Autowired private ProductRepository productRepository;
+    @Autowired private ImageUtils imageUtils;
+    @Autowired private CategoryRepository categoryRepository;
+    @Autowired private OrderItemService orderItemService;
+    @Autowired private UserOrderRepository orderRepository;
+    @Autowired private UserRepository userRepository;
 
     @Override
     public Product addProduct(ProductDto productDto) throws IOException {
@@ -137,22 +127,37 @@ public class ProductServiceImp implements ProductService {
     }
 
     @Override
-    public String order(Long productId, Integer quantity, Long userId) {
+    public String order(Long productId, Integer quantity, String userEmail) {
+        Product product = productRepository.findById(productId).get();
         OrderItem orderItem = OrderItem.builder()
-                .productId(productId)
+                .productOrder(product)
                 .quantity(quantity)
                 .build();
-        Order order = orderRepository.findOrderByUserIdAndStatusNotYet(userId);
+        User user = userRepository.findByEmail(userEmail).get();
+        UserOrder order = orderRepository.findOrderByUserIdAndStatusNotYet(user.getId());
         if(order == null) {
-            Order userOrder = Order.builder()
+            UserOrder userOrder = UserOrder.builder()
                     .status("not yet")
-                    .user(userRepository.findById(userId).get())
+                    .user(userRepository.findById(user.getId()).get())
                     .orderItems(List.of(orderItem))
                     .build();
             orderRepository.save(userOrder);
         }
         else {
-            order.addOrderItem(orderItem);
+            boolean check = false;
+            for(OrderItem orderItem1 : order.getOrderItems()) {
+                if(orderItem1.getProductOrder().getId() == productId) {
+                    check = true;
+                    orderItem1.setQuantity(quantity);
+                    break;
+                }
+            }
+            if(check) {
+                orderRepository.save(order);
+            } else {
+                order.addOrderItem(orderItem);
+                orderRepository.save(order);
+            }
         }
         return "success";
     }

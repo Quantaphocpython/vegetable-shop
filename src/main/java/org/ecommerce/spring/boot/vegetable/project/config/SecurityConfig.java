@@ -32,13 +32,19 @@ public class SecurityConfig {
         "/css/**"
     };
 
+    private final static String[] authenticatedPath = {
+            "/shop/order",
+            "shop/shoppingCart",
+            "/user/**"
+    };
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         author -> author
-                                .requestMatchers("/shop/order").authenticated()
+                                .requestMatchers(authenticatedPath).authenticated()
                                 .requestMatchers(paths).permitAll()
                                 .anyRequest().authenticated()
                 )

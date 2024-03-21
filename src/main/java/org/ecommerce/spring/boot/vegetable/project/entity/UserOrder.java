@@ -14,18 +14,28 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Order {
+public class UserOrder {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String status;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(
-            name = "order_id",
-            referencedColumnName = "id"
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "order_item_mapping",
+            joinColumns = @JoinColumn(
+                    name = "user_order_id",
+                    referencedColumnName = "id"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "order_item_id",
+                    referencedColumnName = "id"
+            )
     )
     private List<OrderItem> orderItems;
+    private String address;
+    private String phoneNumber;
+    private String orderNote;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(

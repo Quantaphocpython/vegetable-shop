@@ -21,7 +21,7 @@
                         <ul class="header-top-left">
                             <li class="header-top-item header-top-left__mail">
                                 <i class="bi bi-envelope-fill header-top-left__mail-icon"></i>
-                                hello@colorlib.com
+                                hello@123.com
                             </li>
                             <li class="header-top-item">Free Shipping for all Order of $99</li>
                         </ul>
@@ -52,7 +52,8 @@
                                     <span th:text="${#authentication.name}"></span>
                                 </a>
                                 <div class="list-group header-user-action">
-                                    <a th:href="@{/logout}" class="list-group-item list-group-item-action header-user-action-item">Logout</a>
+                                    <a th:href="@{/user/profile}" class="list-group-item list-group-item-action header-user-action-item">Your Account</a>
+                                    <a th:href="@{/user/purchase}" class="list-group-item list-group-item-action header-user-action-item">Your Order</a>
                                     <a th:href="@{/logout}" class="list-group-item list-group-item-action header-user-action-item">Logout</a>
                                 </div>
                             </li>
@@ -64,7 +65,7 @@
                 <div class="row">
                     <nav class="navbar bg-body-tertiary header-menu-nav">
                         <div class="container">
-                            <a class="navbar-brand " href="#">
+                            <a class="navbar-brand " href="/home">
                                 <img th:src="@{/img/logo.png}" alt="Logo" class="d-inline-block align-text-top">
                             </a>
                             <ul class="nav col-6 ">
@@ -108,7 +109,7 @@
                             </ul>
 
                             <div class="">
-                                <a href="#" style="text-decoration: none; margin-right: 8px;">
+                                <a href="/shop/shoppingCart" style="text-decoration: none; margin-right: 8px;">
                                     <i class="bi bi-bag-dash-fill header-menu-icon"></i>
                                 </a>
                             </div>
@@ -124,10 +125,14 @@
             <img th:src="@{/img/breadcrumb.jpg.webp}" class="page-title-img">
             <h2 class="page-title"
                 th:text="${request.getRequestURL().toString().contains('shop') &&
-                            !request.getRequestURL().toString().contains('shoppingCart')} ? 'OGANI SHOP':''">
+                            !request.getRequestURL().toString().contains('shoppingCart') &&
+                            !request.getRequestURL().toString().contains('checkout')} ? 'OGANI SHOP':''">
             </h2>
             <h2 class="page-title"
                 th:text="${request.getRequestURL().toString().contains('shoppingCart')} ? 'Shopping Cart':''">
+            </h2>
+            <h2 class="page-title"
+                th:text="${request.getRequestURL().toString().contains('checkout')} ? 'Checkout':''">
             </h2>
             <h2 class="page-title"
                 th:text="${request.getRequestURL().toString().contains('blog')} ? 'BLOG':''">

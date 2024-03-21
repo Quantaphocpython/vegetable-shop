@@ -15,6 +15,11 @@ public class OrderItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long productId;
+    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinColumn(
+            name = "product_id",
+            referencedColumnName = "id"
+    )
+    private Product productOrder;
     private int quantity;
 }

@@ -24,5 +24,9 @@ spring:
           auth: true
           starttls:
             enable: true
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
 
 

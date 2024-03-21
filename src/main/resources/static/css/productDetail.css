@@ -1,6 +1,32 @@
 
 
 body {
+    position: relative;
+    margin: 0;
+    height: 100vh;
+}
+
+.add-product {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    height: fit-content;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    z-index: 10;
+    border-radius: 30px;
+}
+
+.add-product-icon {
+    font-size: 100px;
+    color: rgb(207,244,252);
+}
+
+.add-product-text {
+    color: white;
+    font-size: 18px;
 }
 
 .cost-color {

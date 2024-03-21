@@ -20,14 +20,18 @@ public class CustomUserDetails implements UserDetails {
     private Boolean isEnabled;
     private List<GrantedAuthority> authorities;
 
-    CustomUserDetails(User user) {
+    public CustomUserDetails(User user) {
         this.userName = user.getEmail();
         this.password = user.getPassword();
         this.isEnabled = user.getEnabled();
-        this.authorities =
-                Arrays.stream(user.getRoles().toString().split(","))
-                        .map(SimpleGrantedAuthority::new)
-                        .collect(Collectors.toList());
+//        this.authorities =
+//                Arrays.stream(user.getRoles().toString().split(","))
+//                        .map(SimpleGrantedAuthority::new)
+//                        .collect(Collectors.toList());
+        this.authorities = user.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getName()))
+                .collect(Collectors.toList());
+        System.out.println(user+ " " + authorities);
     }
 
 

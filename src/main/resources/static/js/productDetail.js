@@ -2,12 +2,15 @@
 
 $(document).ready(function(){
     loadProductDetailPage();
+    showMessage();
 });
 
 function loadProductDetailPage() {
     let path = document.location.href;
     let match = path.match(/\/product\/(\d+)/);
     let productId = match ? match[1] : 1;
+
+    console.log(document.location);
     getProductDetail(productId);
 }
 
@@ -34,13 +37,16 @@ function getProductDetail(id) {
                         "<h4 class='mt-3 cost-color' style='font-size: 30px'>  $"+ Math.min(product.cost, product.saleCost).toFixed(2) + (product.isSale ? "<span style='font-size: 14px; margin-left: 10px'>(sale)</span>" : "") +"</h4>" +
                         "<p class='product-detail_text mt-3'>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>" +
                         "<div class='d-flex product-detail_number-wrapper mt-5'>" +
-                            "<div class='d-flex product-detail_number'>" +
-                                "<span class='product-detail_number-item' onclick='decreaseProductQuantity()'>-</span>" +
-                                "<input class='product-detail_number-item text-center' type='number' value='0'/>" +
-                                "<span class='product-detail_number-item' onclick='incrementProductQuantity()'>+</span>" +
-                            "</div>" +
-                            "<button class=\"btn btn-outline-success search-bar-submit product-detail_btn\" type=\"submit\" " +
-                                    "onclick='order("+ product.id + "," + $('.product-detail_number-item').value +")'>ADD TO CART</button>" +
+                            "<form method='post' action='/shop/order' class='d-flex'>" +
+                                "<div class='d-flex product-detail_number'>" +
+                                    "<span class='product-detail_number-item' onclick='decreaseProductQuantity()'>-</span>" +
+                                    "<input type='hidden' name='userId' value='1'/>" +
+                                    "<input type='hidden' name='productId' value='"+ product.id +"'/>" +
+                                    "<input class='product-detail_number-item text-center' type='number' value='1' name='quantity'/>" +
+                                    "<span class='product-detail_number-item' onclick='incrementProductQuantity()'>+</span>" +
+                                "</div>" +
+                                "<button class=\"btn btn-outline-success search-bar-submit product-detail_btn\" type=\"submit\" " + ">ADD TO CART</button>" +
+                            "</form>" +
                         "</div>" +
                         "<hr class='mt-5' />" +
                         "<div class='mt-5 product-detail_inform'>" +
@@ -74,19 +80,23 @@ function getProductDetail(id) {
     });
 }
 
-function order(productId, quantity, userId) {
-    $.ajax({
-       type: "GET",
-        url: "/shop/order",
-        data: {
-            productId: productId,
-            quantity: quantity,
-            userId: userId
-        },
-        success: function (data) {
-           console.log(data);
-        }
-    });
+function showMessage() {
+    // const urlString = document.location.href;
+    // const regex = /add=(\w+)/;
+    // const match = urlString.match(regex);
+    // const resultValue = match ? match[1] : null;
+    const resultValue = document.querySelector("#message").value;
+    if(resultValue === "success") {
+        let html = "<div class=\"add-product text-center\">\n" +
+            "        <i class=\"bi bi-check-lg add-product-icon\"></i>\n" +
+            "        <p class=\"add-product-text\">Add product successfully</p>\n" +
+            "    </div>";
+        $('body').append(html);
+        let addProductDiv = $('.add-product');
+        setTimeout(() => {
+            addProductDiv.remove();
+        }, 4000);
+    }
 }
 
 function incrementProductQuantity() {
@@ -96,8 +106,8 @@ function incrementProductQuantity() {
 
 function decreaseProductQuantity() {
     let quantity = document.querySelectorAll(".product-detail_number-item")[1];
-    if(quantity.value === "0") {
-        quantity.value = 0;
+    if(quantity.value === "1") {
+        quantity.value = 1;
     } else {
         quantity.value = parseInt(quantity.value) - 1;
     }

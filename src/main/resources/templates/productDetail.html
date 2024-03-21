@@ -20,6 +20,7 @@
     <link rel="stylesheet" th:href="@{/css/productDetail.css}">
 </head>
 <body>
+    <input type="hidden" th:value="${add}" id="message">
     <div th:insert="fragments/fragments :: header"></div>
     <div class="container col-9 search-content">
         <div th:insert="home :: header-search-bar"></div>

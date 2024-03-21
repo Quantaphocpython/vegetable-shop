@@ -5,9 +5,7 @@ $(document).ready(function(){
     slideOne();
     slideTwo();
     rangeKeyUp();
-    // getAllProduct(0, 1000, "0", "ALL");
     loadProductByCategory();
-    // showPages(0, 1000, "ALL");
     getLatestProduct();
 });
 
@@ -21,10 +19,7 @@ function loadProductByCategory() {
         var res = document.querySelectorAll(".category-list-item-link")[number]
         res.click();
         getAllProduct(0, 1000, 0, res.innerHTML)
-        document.getElementById('product-view').scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
+        window.scrollTo(0, 750);
         showPages(0, 1000, res.innerHTML);
     }
     else {

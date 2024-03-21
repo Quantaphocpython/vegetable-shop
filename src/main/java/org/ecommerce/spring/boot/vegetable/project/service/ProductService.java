@@ -30,5 +30,5 @@ public interface ProductService {
 
     List<Product> getProductByCategory(Long categoryId, Long productId);
 
-    String order(Long productId, Integer quantity, Long userId);
+    String order(Long productId, Integer quantity, String userEmail);
 }

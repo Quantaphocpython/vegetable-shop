@@ -18,6 +18,7 @@
     <link rel="stylesheet" th:href="@{/css/footer.css}">
     <link rel="stylesheet" th:href="@{/css/shop.css}">
     <link rel="stylesheet" th:href="@{/css/productDetail.css}">
+    <link rel="stylesheet" th:href="@{/css/shoppingCart.css}">
 <body>
     <div th:insert="fragments/fragments :: header"></div>
     <div class="container col-9 search-content">
@@ -25,5 +26,56 @@
     </div>
     <div th:insert="fragments/fragments :: page-title-image"></div>
 
+    <div class="container col-9 search-content mb-3">
+        <div class="row">
+            <div class="col-6">
+                <h4 class="shopping-cart-product">Products</h4>
+            </div>
+            <div class="col-6">
+               <div class="row text-center">
+                    <div class="shopping-cart-property col-4">
+                        <h4 class="shopping-cart-product text-title">Price</h4>
+                    </div>
+                    <div class="shopping-cart-property col-4">
+                        <h4 class="shopping-cart-product text-title">Quantity</h4>
+                    </div>
+                    <div class="shopping-cart-property col-4">
+                        <h4 class="shopping-cart-product text-title">Total</h4>
+                    </div>
+               </div>
+            </div>
+        </div>
+    </div>
+    <!--  Order View  -->
+    <div class="container col-9 order-item-wrapper" style="border-top: 1px solid rgba(0, 0, 0, 0.1);">
+
+    </div>
+
+    <div class="container col-9 mt-3">
+        <a class="continue-shopping-btn" href="/shop">Continue Shopping</a>
+        <div class="row mt-5">
+            <div class="col-6">
+                <h4 class="shopping-cart-product">Products</h4>
+                <div class="row mt-3" style="height: 46px; width: 90%;">
+                    <div class="col-7">
+                        <input type="text" class="w-100 discount-input h-100" placeholder="Enter your coupon here">
+                    </div>
+                    <div class="col-5">
+                        <button class="discount-btn w-100 h-100">apply coupon</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 cart-total-price-wrapper">
+                <h4 class="shopping-cart-product mb-3">Cart Total</h4>
+                <div class="d-flex justify-content-between">
+                    <h5 class="cart-total">Total</h5>
+                    <h5 class="cart-total cart-total-price" style="color: #DD2222"></h5>
+                </div>
+                <a href="/shop/checkout" class="cart-checkout-btn text-center mt-4 w-100 d-block">proceed to checkout</a>
+            </div>
+        </div>
+    </div>
+    <div th:insert="fragments/footer :: footer"></div>
+    <script type="text/javascript" th:src="@{/js/shoppingCart.js}"></script>
 </body>
 </html>
