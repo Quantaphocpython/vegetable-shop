@@ -73,4 +73,10 @@ public class UserController {
         userService.changeNameUser(user);
         return redirectView;
     }
+
+    @GetMapping("/deleteUser/{id}")
+    public String deleteUserById(@PathVariable Long id) {
+        userService.deleteUserById(id);
+        return "delete success";
+    }
 }

@@ -25,4 +25,8 @@ public interface UserOrderRepository extends JpaRepository<UserOrder, Long> {
 
 
     Page<UserOrder> findAllByUser(User user, Pageable page);
+
+    List<UserOrder> findAllByStatusNot(String status);
+
+    List<UserOrder> findAllByStatusIs(String status);
 }

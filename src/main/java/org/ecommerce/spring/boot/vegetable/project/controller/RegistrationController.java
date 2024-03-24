@@ -17,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.naming.Binding;
 import java.util.Optional;
@@ -42,10 +43,10 @@ public class RegistrationController {
     }
 
     @PostMapping("/register")
-    public String registerUser(@Valid @ModelAttribute UserDto userDto,
-                               BindingResult result, Model model, HttpServletRequest request) {
+    public RedirectView registerUser(@Valid @ModelAttribute UserDto userDto,
+                                     BindingResult result, Model model, HttpServletRequest request) {
         if(!userDto.getPassword().equals(userDto.getConfirmPassword())) {
-            return "redirect:/registration/register-form?invalidc_f";
+            return new RedirectView("/registration/register-form?invalidc_f");
         }
         if(result.hasErrors()) {
             model.addAttribute("user", userDto);
@@ -53,24 +54,24 @@ public class RegistrationController {
         System.out.println(result);
         User user = userService.registerUser(userDto);
         publisher.publishEvent(new RegistrationCompleteEvent(user, ApplicationUrl.getUrl(request)));
-        return "redirect:/registration/register-form?success";
+        return new RedirectView("/registration/register-form?success");
     }
 
     @GetMapping("/verifyEmail")
-    public String verifyEmail(@RequestParam String token) {
+    public RedirectView verifyEmail(@RequestParam String token) {
         Optional<VerificationToken> verificationTokenOptional =
                 verificationTokenService.findByToken(token);
         if(verificationTokenOptional.isPresent() && verificationTokenOptional.get().getUser().getEnabled()) {
-            return "redirect:/login?verified";
+            return new RedirectView("/login?verified");
         }
         String result = verificationTokenService.validateVerificationToken(token);
         switch (result.toLowerCase()) {
             case "valid":
-                return "redirect:/login?valid";
+                return new RedirectView("/login?valid");
             case "invalid":
-                return "redirect:/error?invalid";
+                return new RedirectView("/error?invalid");
             default:
-                return "redirect:/error?expired";
+                return new RedirectView("/error?expired");
         }
     }
 

@@ -38,6 +38,10 @@ public class SecurityConfig {
             "/user/**"
     };
 
+    private final static String[] admin = {
+            "/admin/**"
+    };
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
@@ -45,6 +49,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         author -> author
                                 .requestMatchers(authenticatedPath).authenticated()
+                                .requestMatchers(admin).hasAnyAuthority("ADMIN")
                                 .requestMatchers(paths).permitAll()
                                 .anyRequest().authenticated()
                 )

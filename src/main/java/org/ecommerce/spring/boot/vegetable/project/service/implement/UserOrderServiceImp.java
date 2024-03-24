@@ -119,4 +119,17 @@ public class UserOrderServiceImp implements UserOrderService {
         return userOrders;
     }
 
+    @Override
+    public List<UserOrder> getAllOrder() {
+        List<UserOrder> userOrders = orderRepository.findAllByStatusIs("in progress");
+        return userOrders;
+    }
+
+    @Override
+    public void confirmOrder(Long orderId) {
+        UserOrder userOrder = orderRepository.findById(orderId).get();
+        userOrder.setStatus("confirmed");
+        orderRepository.save(userOrder);
+    }
+
 }

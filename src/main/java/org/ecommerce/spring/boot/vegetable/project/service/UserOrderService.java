@@ -22,4 +22,8 @@ public interface UserOrderService {
     UserOrder findByUserEmail(String userEmail);
 
     List<UserOrder> getAllUserOrder(String userEmail);
+
+    List<UserOrder> getAllOrder();
+
+    void confirmOrder(Long orderId);
 }

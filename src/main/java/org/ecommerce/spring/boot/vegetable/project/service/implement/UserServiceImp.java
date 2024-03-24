@@ -23,7 +23,10 @@ public class UserServiceImp implements UserService {
     @Autowired private RoleRepository roleRepository;
     @Override
     public User registerUser(UserDto userDto) {
-         Role role = roleRepository.findByName("USER");
+        Role role = roleRepository.findByName("USER");
+        if(role == null) {
+            role = new Role("USER");
+        }
         User user = User.builder()
                 .firstName(userDto.getFirstName())
                 .lastName(userDto.getLastName())
@@ -52,5 +55,10 @@ public class UserServiceImp implements UserService {
         user1.setFirstName(user.getFirstName());
         user1.setLastName((user.getLastName()));
         userRepository.save(user1);
+    }
+
+    @Override
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
     }
 }
