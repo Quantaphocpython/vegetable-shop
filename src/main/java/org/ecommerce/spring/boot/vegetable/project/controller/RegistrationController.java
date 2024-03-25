@@ -53,6 +53,8 @@ public class RegistrationController {
         }
         System.out.println(result);
         User user = userService.registerUser(userDto);
+        if(user == null)
+            return new RedirectView("/registration/register-form?used");
         publisher.publishEvent(new RegistrationCompleteEvent(user, ApplicationUrl.getUrl(request)));
         return new RedirectView("/registration/register-form?success");
     }

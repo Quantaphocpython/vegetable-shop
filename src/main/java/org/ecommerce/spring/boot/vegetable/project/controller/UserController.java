@@ -2,9 +2,8 @@ package org.ecommerce.spring.boot.vegetable.project.controller;
 
 import jakarta.servlet.http.HttpServletRequest;
 import org.ecommerce.spring.boot.vegetable.project.dto.UserDto;
-import org.ecommerce.spring.boot.vegetable.project.entity.OrderItem;
-import org.ecommerce.spring.boot.vegetable.project.entity.User;
-import org.ecommerce.spring.boot.vegetable.project.entity.UserOrder;
+import org.ecommerce.spring.boot.vegetable.project.entity.*;
+import org.ecommerce.spring.boot.vegetable.project.service.CategoryService;
 import org.ecommerce.spring.boot.vegetable.project.service.UserOrderService;
 import org.ecommerce.spring.boot.vegetable.project.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +20,16 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired UserOrderService userOrderService;
-    @Autowired UserService userService;
+    @Autowired private UserOrderService userOrderService;
+    @Autowired private UserService userService;
+    @Autowired private CategoryService categoryService;
 
     @GetMapping("/purchase")
     public ModelAndView purchase(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("user");
+
+        List<Category> categories = categoryService.getCategoryList();
+        modelAndView.addObject("categories", categories);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();
@@ -42,6 +45,9 @@ public class UserController {
     @GetMapping("/profile")
     public ModelAndView account(HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("user");
+
+        List<Category> categories = categoryService.getCategoryList();
+        modelAndView.addObject("categories", categories);
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String userEmail = authentication.getName();

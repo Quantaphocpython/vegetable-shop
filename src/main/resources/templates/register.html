@@ -16,6 +16,9 @@
             <div class="alert alert-info" th:if="${param.success}">
                 Please check your email to complete your registration.
             </div>
+            <div class="alert alert-danger" th:if="${param.used}">
+                Email is used.
+            </div>
 
             <div class="mb-3 row">
                 <label for="firstName" class="col-sm-4 col-form-label">First Name</label>

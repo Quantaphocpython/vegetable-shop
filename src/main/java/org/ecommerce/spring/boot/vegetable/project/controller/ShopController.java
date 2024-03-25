@@ -40,6 +40,21 @@ public class ShopController {
         return modelAndView;
     }
 
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam String search, HttpServletRequest request) {
+        ModelAndView modelAndView = new ModelAndView("shop");
+        List<Category> categories = categoryService.getCategoryList();
+        modelAndView.addObject("categories", categories);
+        modelAndView.addObject("request", request);
+        modelAndView.addObject("search", search);
+        return modelAndView;
+    }
+
+//    @GetMapping("searchProduct")
+//    public List<Product> searchProducts(@RequestParam String search) {
+//        List<Product> products = productService.searchProducts(search);
+//    }
+
     @GetMapping("/product/{id}")
     public ModelAndView productDetail(@PathVariable Long id, HttpServletRequest request) {
         ModelAndView modelAndView = new ModelAndView("productDetail");

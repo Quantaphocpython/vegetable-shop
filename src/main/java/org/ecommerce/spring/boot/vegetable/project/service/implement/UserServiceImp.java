@@ -27,6 +27,10 @@ public class UserServiceImp implements UserService {
         if(role == null) {
             role = new Role("USER");
         }
+        Optional<User> check = userRepository.findByEmail(userDto.getEmail());
+        if(check.isPresent()) {
+            return null;
+        }
         User user = User.builder()
                 .firstName(userDto.getFirstName())
                 .lastName(userDto.getLastName())
